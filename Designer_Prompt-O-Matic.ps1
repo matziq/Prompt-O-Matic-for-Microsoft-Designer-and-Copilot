@@ -155,9 +155,27 @@ $randomButton.Add_Click({
     $selectedWords += $extraDropdown.Items | Get-Random
     $selectedWords += $colorDropdown.Items | Get-Random
     $clipboardText = [string]::Join(', ', $selectedWords)
-    $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
-    Set-Clipboard -Value $clipboardText
-    $copiedTextbox.Text = $clipboardText
+    if ($clipboardText) {
+        $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
+        Set-Clipboard -Value $clipboardText
+        $copiedTextbox.Text = $clipboardText
+    }
+})
+
+# Add a button to open the website with the generated text
+$webButton = New-Object System.Windows.Forms.Button
+$webButton.Text = 'Open in Microsoft Designer'
+$webButton.Location = New-Object System.Drawing.Point(290, 250)
+$webButton.Size = New-Object System.Drawing.Size(75, 50)
+$webButton.Add_Click({
+    # Get the text from the clipboard
+    $clipboardText = Get-Clipboard
+    if ($clipboardText) {
+        # Format the text for the URL
+        $urlText = Format-ForURL($clipboardText)
+        # Open the website with the generated text
+        Start-Process "$baseURL$urlText"
+    }
 })
 
 # Set the copied text to the joined selected words
@@ -170,12 +188,14 @@ function Format-ForURL ($text) {
     $text = $text.Replace(', ', '+').Replace(' ', '+')
     return $text
 }
+
 # Add a button to open the website with the generated text
 $webButton = New-Object System.Windows.Forms.Button
 $webButton.Text = 'Open in Microsoft Designer'
 $webButton.Location = New-Object System.Drawing.Point(290, 250)
 $webButton.Size = New-Object System.Drawing.Size(75, 50)
 $webButton.Add_Click({
+
     # Capture the currently chosen items from the dropdowns
     $selectedWords = @()
     if ($subjectDropdown.SelectedItem) { $selectedWords += $subjectDropdown.SelectedItem }
@@ -185,15 +205,18 @@ $webButton.Add_Click({
     if ($extraDropdown.SelectedItem) { $selectedWords += $extraDropdown.SelectedItem }
     if ($colorDropdown.SelectedItem) { $selectedWords += $colorDropdown.SelectedItem }
     $clipboardText = [string]::Join(', ', $selectedWords)
-    $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
-    Set-Clipboard -Value $clipboardText
-    $copiedTextbox.Text = $clipboardText
+    if ($clipboardText) {
+        $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
+        Set-Clipboard -Value $clipboardText
+        $copiedTextbox.Text = $clipboardText
+    }
 
     # Open the website with the generated text
     $formattedText = Format-ForURL -text $copiedTextbox.Text
     $url = $baseURL + $formattedText
     Start-Process $url
 })
+
 
 # Add the selected items from the Dropdowns to the selectedWords array
 if ($colorDropdown.Text) { $selectedWords += $colorDropdown.Text }

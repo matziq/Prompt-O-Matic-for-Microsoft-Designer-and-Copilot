@@ -1,11 +1,4 @@
 <#
-SYNOPSIS
-This script creates a prompt generator form for Microsoft Designer.
-
-DESCRIPTION
-The script creates a Windows Forms application that allows the user to generate prompts for Microsoft Designer. The form contains dropdowns for selecting subject, action, style, media, extra, and colors. When the "Random" button is clicked, the selected items in the dropdowns are set to random values.
-
-NOTES
 Author: John Rea
 Date: April 19, 2024
 Version: 1.1
@@ -23,7 +16,7 @@ $baseURL = "https://designer.microsoft.com/image-creator?p="
 # Create a function to format the text for the URL
 function Format-ForURL ($text) {
     try {
-        $text = $text.Replace(', ', ',').Replace(' ', '+')
+        $text = $text.Replace(' ', '+')
         return $text
     } catch {
         [System.Windows.Forms.MessageBox]::Show("An error occurred while formatting the text: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
@@ -100,77 +93,57 @@ $extraFilterTextbox.Location = New-Object System.Drawing.Point(200, 110)
 
 # Create dropdown for Subject
 $subjectLabel = New-Object System.Windows.Forms.Label
-$subjectLabel.Text = 'Subject:'
+$subjectLabel.Text = 'Subject of Artwork:'
 $subjectLabel.AutoSize = $true
 $subjectLabel.Location = New-Object System.Drawing.Point(10, 10)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(10, 30)
-$subjectdropdown.items.addrange((@('the avengers', 'batman', 'joker', 'cat woman', 'hobbit', 'elf', 'abyss', 'action', 'actor', 'adventure', 'alien', 'animal', 'apartment', 'appliance', 'artist', 'athlete', 'baby', 'bar', 'beach', 'bear', 'bedroom', 'biopic', 'brotherhood', 'building', 'businessperson', 'castle', 'cat', 'cave', 'chef', 'church', 'city', 'club', 'conflict', 'continent', 'country', 'cowboy', 'crime', 'criminal', 'dancer', 'desert', 'dessert', 'detective', 'devil', 'dining', 'documentary', 'drama', 'drink', 'earth', 'equality', 'family', 'fight', 'flower', 'food', 'forest', 'fraternity', 'fruit', 'furniture', 'galaxy', 'girl', 'grave', 'heaven', 'hell', 'hero', 'hospital', 'house', 'island', 'kitchen', 'lake', 'limbo', 'man', 'moon', 'mosque', 'mountain', 'museum', 'musician', 'ninja', 'nurse', 'ocean', 'office', 'palace', 'paradise', 'park', 'pirate', 'planet', 'plant', 'politician', 'purgatory', 'restaurant', 'river', 'robot', 'room', 'ruin', 'rural', 'sasquatch', 'school', 'scientist', 'shrine', 'sisterhood', 'soldier', 'sorcerer', 'spy', 'star', 'store', 'student', 'synagogue', 'teacher', 'temple', 'theater', 'thriller', 'tomb', 'tool', 'town', 'tree', 'universe', 'vampire', 'vehicle', 'village', 'villain', 'void', 'werewolf', 'western', 'witch', 'wizard', 'woman', 'world', 'writer') | sort-object))
+$subjectdropdown.items.addrange((@('the avengers', 'batman', 'joker', 'cat woman', 'hobbit', 'elf', 'abyss', 'action', 'actor', 'adventure', 'alien', 'animal', 'apartment', 'appliance', 'artist', 'athlete', 'baby', 'bar', 'beach', 'bear', 'bedroom', 'biopic', 'brotherhood', 'building', 'businessperson', 'castle', 'cat', 'cave', 'chef', 'church', 'city', 'club', 'conflict', 'continent', 'country', 'cowboy', 'crime', 'criminal', 'dancer', 'desert', 'dessert', 'detective', 'devil', 'dining', 'documentary', 'drama', 'drink', 'earth', 'equality', 'family', 'fight', 'flower', 'food', 'forest', 'fraternity', 'fruit', 'furniture', 'galaxy', 'girl', 'grave', 'heaven', 'hell', 'hero', 'hospital', 'house', 'island', 'kitchen', 'lake', 'limbo', 'man', 'moon', 'mosque', 'mountain', 'museum', 'musician', 'ninja', 'nurse', 'ocean', 'office', 'palace', 'paradise', 'park', 'pirate', 'planet', 'plant', 'politician', 'purgatory', 'restaurant', 'river', 'robot', 'room', 'ruin', 'rural', 'sasquatch', 'school', 'scientist', 'shrine', 'sisterhood', 'soldier', 'star', 'store', 'synagogue', 'teacher', 'temple', 'thriller', 'tomb', 'town', 'tree', 'universe', 'vampire', 'vehicle', 'village', 'villain', 'werewolf', 'western', 'witch', 'wizard', 'woman', 'world', 'writer','sorcerer', 'spy','student', 'theater', 'tool', 'void') | sort-object -Unique))
 
 # Create dropdown for Action
 $actionLabel = New-Object System.Windows.Forms.Label
-$actionLabel.Text = 'Action:'
+$actionLabel.Text = 'Action Verb:'
 $actionLabel.AutoSize = $true
 $actionLabel.Location = New-Object System.Drawing.Point(10, 60)
 $actionDropdown = New-Object System.Windows.Forms.ComboBox
 $actionDropdown.Location = New-Object System.Drawing.Point(10, 80)
-$actionDropdown.Items.AddRange((@('agreeing', 'arguing', 'bargaining', 'betraying', 'blackmailing', 'bribing', 'bullying', 'buying', 'celebrating', 'chatting', 'cheating', 'cleaning', 'climbing', 'competing', 'compromising', 'conspiring', 'cooking', 'cooperating', 'corrupting', 'dancing', 'debating', 'decorating', 'defending', 'destroying', 'discussing', 'drinking', 'driving', 'eating', 'editing', 'escaping', 'exercising', 'experimenting', 'explaining', 'failing', 'fighting', 'filming', 'fishing', 'flying', 'gardening', 'harassing', 'hiding', 'hunting', 'intimidating', 'investing', 'jumping', 'learning', 'listening', 'logging', 'losing', 'lying', 'manufacturing', 'meditating', 'meeting', 'mining', 'mourning', 'murdering', 'negotiating', 'painting', 'photographing', 'planning', 'playing', 'plotting', 'praying', 'processing', 'protecting', 'reading', 'relaxing', 'repairing', 'researching', 'riding', 'rolling', 'running', 'saving', 'scheming', 'sculpting', 'selling', 'shopping', 'singing', 'sitting', 'sleeping', 'smoking', 'spending', 'standing', 'stealing', 'studying', 'succeeding', 'swimming', 'talking', 'teaching', 'thinking', 'training', 'trading', 'trapping', 'traveling', 'visiting', 'walking', 'wasting', 'watching', 'winning', 'working', 'writing') | Sort-Object))
+$actionDropdown.Items.AddRange((@('agreeing', 'arguing', 'bargaining', 'betraying', 'blackmailing', 'bribing', 'bullying', 'buying', 'celebrating', 'chatting', 'cheating', 'cleaning', 'climbing', 'competing', 'compromising', 'conspiring', 'cooking', 'cooperating', 'corrupting', 'dancing', 'debating', 'decorating', 'defending', 'destroying', 'discussing', 'drinking', 'driving', 'eating', 'editing', 'escaping', 'exercising', 'experimenting', 'explaining', 'failing', 'fighting', 'filming', 'fishing', 'flying', 'gardening', 'harassing', 'hiding', 'hunting', 'intimidating', 'investing', 'jumping', 'learning', 'listening', 'logging', 'losing', 'lying', 'manufacturing', 'meditating', 'meeting', 'mining', 'mourning', 'murdering', 'negotiating', 'painting', 'photographing', 'planning', 'playing', 'plotting', 'praying', 'processing', 'protecting', 'reading', 'relaxing', 'repairing', 'researching', 'riding', 'rolling', 'running', 'saving', 'scheming', 'sculpting', 'selling', 'shopping', 'singing', 'sitting', 'sleeping', 'smoking', 'spending', 'standing', 'stealing', 'studying', 'succeeding', 'swimming', 'talking', 'teaching', 'thinking', 'training', 'trading', 'trapping', 'traveling', 'visiting', 'walking', 'wasting', 'watching', 'winning', 'working', 'writing') | Sort-Object -Unique))
 
 # Create dropdown for Style
 $styleLabel = New-Object System.Windows.Forms.Label
-$styleLabel.Text = 'Style:'
+$styleLabel.Text = 'Artistic Style:'
 $styleLabel.AutoSize = $true
 $styleLabel.Location = New-Object System.Drawing.Point(10, 110)
 $styleDropdown = New-Object System.Windows.Forms.ComboBox
 $styleDropdown.Location = New-Object System.Drawing.Point(10, 130)
-$styleDropdown.Items.AddRange((@('tattoo', 'abstract', 'art deco', 'art nouveau', 'baroque', 'classicism', 'conceptual art', 'constructivism', 'conceptual', 'cubism', 'dadaism', 'expressionism', 'fauvism', 'futurism', 'impressionism', 'minimalism', 'modernism', 'neo-classicism', 'neo-expressionism', 'op art', 'pop art', 'post-impressionism', 'origami', 'realism', 'renaissance', 'rococo', 'romanticism', 'surrealism', 'symbolism', 'vorticism','abstract','abstract expressionist','action','action painter','anime','sandcastle building','cartoon','color field','comic book','computer-generated','cubist','cyberpunk','dadaist','digital','documentary','dystopian','expressionistic','fantasy','far eastern','fauvist','film','fine art','futuristic','graffiti','hand-drawn','hard edge','horror','hyper-realistic','hyperrealist','impressionistic','industrial','low poly','manga','mechanical','minimalist','modern','natural','noir','op art','organic','period','photo-realistic','photorealist','pointillist','pop art','postapocalyptic','realist','realistic','rural','sci-fi','soft edge','steampunk','street art','studio extra','surreal','surreal fantastic realist','surreal realist','surrealist','superrealist','thriller','traditional','urban','utopian','visionary realist','western') | Sort-Object))
+$styleDropdown.Items.AddRange((@('tattoo', 'art deco', 'art nouveau', 'baroque', 'classicism', 'conceptual', 'constructivism', 'cubism', 'dadaism', 'expressionism', 'fauvism', 'futurism', 'impressionism', 'minimalism', 'modernism', 'neo-classicism', 'neo-expressionism', 'op', 'post-impressionism', 'origami', 'realism', 'renaissance', 'rococo', 'romanticism', 'surrealism', 'symbolism', 'vorticism','abstract','abstract expressionist','action','action painter','anime','sandcastle building','cartoon','color field','comic book','computer-generated','cubist','cyberpunk','dadaist','digital','documentary','dystopian','expressionistic','fantasy','far eastern','fauvist','film','fine','futuristic','graffiti','hand-drawn','hard edge','horror','hyperrealist','impressionistic','industrial','low poly','manga','mechanical','minimalist','modern','natural','noir','organic','period','photo-realistic','photorealist','pointillist','pop','rural','soft edge','studio extra','surreal','surreal fantastic realist','superrealist','thriller','urban','realist','realistic','rural','sci-fi','steampunk','street','surrealist','postapocalyptic','realistic','sci-fi','soft edge','street','surreal realist','superrealist','utopian','visionary realist','western','realistic','soft edge','traditional','urban') | ForEach-Object {$_ + ' style'} | Sort-Object -Unique))
 
 # Create dropdown for Media
 $mediaLabel = New-Object System.Windows.Forms.Label
-$mediaLabel.Text = 'Media:'
+$mediaLabel.Text = 'Type of Media:'
 $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(10, 160)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(10, 180)
-$mediaDropdown.Items.AddRange((@('watercolors', 'pastels', 'acrylics', 'pencils', 'charcoal', 'markers', 'colored pencils', 'ink', 'mixed media', 'clay', 'digital software', 'found objects', 'light', 'sound'.'oil paints', 'water colors', 'crayons', 'accrylics', 'clay', 'marble', 'gravel', 'mud', 'butter', 'feathers', 'yarn', 'film', 'newspaper', 'pencil', 'digital', 'performance', 'ceramics', 'fiber', 'glass', 'jewelry', 'metal', 'wood', 'mixed media', 'papermache', 'conceptual', 'video', 'textiles', 'mosaics', 'calligraphy', 'graffiti', 'comic book', 'sand', 'ice', 'paper', 'shadows', 'filament', 'biologics', 'ecologics', 'food', 'neon lights', 'paper', 'tape', 'tattoo ink', 'light', 'miniatures', 'fire', 'toys', 'balloons', 'latte foam', 'nailpolish', 'makeup', 'flowers', 'snow', 'virtual', 'augmented reality', 'algorithms', 'ascii', 'biofeedback', 'fractals', 'generative', 'glitch', 'holography', 'lasers', 'lights', 'mathematics', 'optics', 'robotics', 'software', 'synesthetics') | Sort-Object))
+$mediaDropdown.Items.AddRange((@('watercolors','pastels', 'acrylics', 'pencils', 'charcoal', 'markers', 'colored pencils', 'ink', 'mixed media', 'clay', 'found objects', 'light', 'oil paints', 'crayons', 'clay', 'marble', 'gravel', 'mud', 'butter', 'feathers', 'yarn', 'film', 'newspaper', 'pencil','ceramics', 'fiber', 'glass', 'jewelry', 'metal', 'wood', 'mixed', 'papermache', 'plaster of paris', 'video', 'textiles', 'mosaics', 'spray paint', 'sand', 'ice','shadows', 'filament', 'biologics', 'food', 'neon lights', 'paper', 'candy', 'rubber ducks', 'snakes', 'tape', 'ink', 'lights', 'miniatures', 'flames', 'fire', 'toys', 'balloons', 'foam', 'nailpolish', 'garbage', 'trash', 'makeup', 'flowers', 'snow', 'virtual reality', 'augmented reality', 'algorithms', 'ascii', 'biofeedback', 'fractals', 'generative', 'glitch', 'holography', 'lasers', 'lights', 'mathematics', 'optics', 'fiber optics', 'robotics', 'software', 'synesthetics', 'sand', 'wire sculpture', 'stained glass', 'encaustic', 'enamel', 'batik', 'mosaic', 'collage', 'assemblage', 'kinetics', 'found objects', 'body paint', 'video', 'computer', 'text', 'ascii characters', 'webdings', 'emojis', 'ceramics', 'textiles', 'fibers', 'jewelry', 'metalworking', 'woodworking', 'glass', 'pottery', 'paper', 'origami', 'collage', 'mosaic', 'tapestry', 'embroider', 'thread', 'beads', 'leather', 'wicker', 'wax', 'soap', 'flowers', 'frosting') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
 
 # Create dropdown for Color
 $colorLabel = New-Object System.Windows.Forms.Label
-$colorLabel.Text = 'Color Palette:'
+$colorLabel.Text = 'Type of Color Palette:'
 $colorLabel.AutoSize = $true
-$colorLabel.Location = New-Object System.Drawing.Point(10, 260)
+$colorLabel.Location = New-Object System.Drawing.Point(10, 210)
 $colorDropdown = New-Object System.Windows.Forms.ComboBox
-$colorDropdown.Location = New-Object System.Drawing.Point(10, 280)
-$colorDropdown.Items.AddRange((@('autumn colors', 'winter colors','spring colors','summer colors','black and white','monochrome','sepia','pastel','neon','primary colors','secondary colors','tertiary colors', 'complementary colors','analogous colors','triadic colors','split-complementary colors','tetradic colors','warm colors','cool colors','neutral colors','earth tones','jewel tones','dark colors','light colors', 'muted colors','saturated colors','desaturated colors','vibrant colors','dull colors','bright colors','light color palette','dark color palette', 'bright color palette','muted color palette','saturated color palette','desaturated color palette','vibrant color palette','dull color palette') | Sort-Object))
+$colorDropdown.Location = New-Object System.Drawing.Point(10, 230)
+$colorDropdown.Items.AddRange((@('autumn','winter','spring','summer','black and white','monochrome','sepia color','neon','primary','secondary','tertiary', 'complementary','analogous','triadic','split-complementary','tetradic','warm','cool','neutral','earth tones','jewel tones','dark','light', 'muted','saturated','desaturated','vibrant','dull','bright','light','dark', 'bright','muted','saturated','desaturated','vibrant','dull') | ForEach-Object {$_ + ' color palette'} | Sort-Object -Unique))
 
 # Create dropdown for Extra
 $extraLabel = New-Object System.Windows.Forms.Label
 $extraLabel.Text = 'Extras:'
 $extraLabel.AutoSize = $true
-$extraLabel.Location = New-Object System.Drawing.Point(10, 210)
+$extraLabel.Location = New-Object System.Drawing.Point(10, 260)
 $extraDropdown = New-Object System.Windows.Forms.ComboBox
-$extraDropdown.Location = New-Object System.Drawing.Point(10, 230)
-$extraDropdown.Items.AddRange((@('4k resolution','8k resolution', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'god rays', 'lens flare') | Sort-Object))
-
-# When the Random button is clicked, set the selected item to the random one
-#$randomButton = New-Object System.Windows.Forms.Button
-#$randomButton.Text = 'Random Prompt from Dropdowns'
-#$randomButton.Location = New-Object System.Drawing.Point(10, 310)
-
-$randomButton.Add_Click({
-    if ($subjectDropdown.Items.Count -gt 0) {
-        $subjectDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $subjectDropdown.Items.Count}
-    if ($actionDropdown.Items.Count -gt 0) {
-        $actionDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $actionDropdown.Items.Count}
-    if ($styleDropdown.Items.Count -gt 0) {
-        $styleDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $styleDropdown.Items.Count}
-    if ($mediaDropdown.Items.Count -gt 0) {
-        $mediaDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $mediaDropdown.Items.Count}
-    if ($colorDropdown.Items.Count -gt 0) {
-        $colorDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $colorDropdown.Items.Count}
-    if ($extraDropdown.Items.Count -gt 0) {
-        $extraDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $extraDropdown.Items.Count}
-})
+$extraDropdown.Location = New-Object System.Drawing.Point(10, 280)
+$extraDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape') | Sort-Object -Unique))
 
 # Enable auto-complete mode for dropdowns
 $subjectDropdown.AutoCompleteMode = 'SuggestAppend'

@@ -1,11 +1,89 @@
+<#
+.SYNOPSIS
+This script creates a prompt generator form for Microsoft Designer.
+
+.DESCRIPTION
+The script creates a Windows Forms application that allows the user to generate prompts for Microsoft Designer. The form contains dropdowns for selecting subject, action, style, media, extra, and colors. When the "Random" button is clicked, the selected items in the dropdowns are set to random values.
+
+.PARAMETER None
+
+.INPUTS
+None
+
+.OUTPUTS
+None
+
+.EXAMPLE
+PS C:\> .\Designer_Prompt-O-Matic.ps1
+
+This will run the script and open the prompt generator form.
+
+.NOTES
+Author: John Rea
+Date: April 19, 2024
+Version: 1.1
+#>
+
+#Adds the System.Windows.Forms assembly.
 Add-Type -AssemblyName System.Windows.Forms
+
+# Clear the clipboard on launch
+Add-Type -AssemblyName System.Windows.Forms
+[System.Windows.Forms.Clipboard]::Clear()
 
 # Create form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'Prompt-O-Matic for Microsoft Designer'
 $form.StartPosition = 'CenterScreen'
-#$form.FormBorderStyle = 'FixedDialog'
+$form.FormBorderStyle = 'FixedDialog'
 $form.AutoSize = $true
+
+# Create a button to clear the clipboard
+$clearButton = New-Object System.Windows.Forms.Button
+$clearButton.Location = New-Object System.Drawing.Point(300, 165)
+$clearButton.Size = New-Object System.Drawing.Size(75, 75)
+$clearButton.Text = "Clear Clipboard"
+
+# Add click event to the clear button
+$clearButton.Add_Click({
+    try {
+        if ([System.Windows.Forms.Clipboard]::ContainsText()) {
+            [System.Windows.Forms.Clipboard]::Clear()
+            $copiedTextbox.Text = ""
+        }
+    } catch {
+        [System.Windows.Forms.MessageBox]::Show("An error occurred while clearing the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    }
+})
+
+# Create a button to reset the dropdown boxes
+$resetButton = New-Object System.Windows.Forms.Button
+$resetButton.Location = New-Object System.Drawing.Point(300, 55)
+$resetButton.Size = New-Object System.Drawing.Size(75, 75)
+$resetButton.Text = "Reset Dropdowns"
+
+# Add click event to the reset button
+$resetButton.Add_Click({
+    $subjectDropdown.SelectedIndex = -1
+    $styleDropdown.SelectedIndex = -1
+    $mediaDropdown.SelectedIndex = -1
+    $actionDropdown.SelectedIndex = -1
+    $extraDropdown.SelectedIndex = -1
+    $colorDropdown.SelectedIndex = -1
+})
+
+# Add the reset button to the form
+$form.Controls.Add($resetButton)
+
+# Create label and textbox to display copied text
+$copiedLabel = New-Object System.Windows.Forms.Label
+$copiedLabel.Text = 'Current Prompt in the Clipboard'
+$copiedLabel.AutoSize = $true
+$copiedLabel.Location = New-Object System.Drawing.Point(10, 320)
+$copiedTextbox = New-Object System.Windows.Forms.TextBox
+$copiedTextbox.Location = New-Object System.Drawing.Point(10, 340)
+$copiedTextbox.ReadOnly = $true
+$copiedTextbox.Size = New-Object System.Drawing.Size(500, 100)
 
 # Create filter textboxes for each dropdown
 $subjectFilterTextbox = New-Object System.Windows.Forms.TextBox
@@ -28,7 +106,7 @@ $subjectLabel.AutoSize = $true
 $subjectLabel.Location = New-Object System.Drawing.Point(10, 10)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(10, 30)
-$subjectDropdown.Items.AddRange(@('Abyss', 'Action', 'Actor', 'Adventure', 'Alien', 'Animal', 'Apartment', 'Appliance', 'Artist', 'Athlete', 'Baby', 'Bar', 'Beach', 'Bear', 'Bedroom', 'Biopic', 'Brotherhood', 'Building', 'Businessperson', 'Castle', 'Cat', 'Cave', 'Chef', 'Church', 'City', 'Club', 'Conflict', 'Continent', 'Country', 'Cowboy', 'Crime', 'Criminal', 'Dancer', 'Desert', 'Detective', 'Devil', 'Dining', 'Documentary', 'Drama', 'Drink', 'Earth', 'Equality', 'Family', 'Fight', 'Flower', 'Food', 'Forest', 'Fraternity', 'Fruit', 'Furniture', 'Galaxy', 'Girl', 'Grave', 'Heaven', 'Hell', 'Hero', 'Hospital', 'House', 'Island', 'Kitchen', 'Lake', 'Limbo', 'Man', 'Moon', 'Mosque', 'Mountain', 'Museum', 'Musician', 'Ninja', 'Nurse', 'Ocean', 'Office', 'Palace', 'Paradise', 'Park', 'Pirate', 'Planet', 'Plant', 'Politician', 'Purgatory', 'Restaurant', 'River', 'Robot', 'Room', 'Ruin', 'Rural', 'Sasquatch', 'School', 'Scientist', 'Shrine', 'Sisterhood', 'Soldier', 'Sorcerer', 'Spy', 'Star', 'Store', 'Student', 'Synagogue', 'Teacher', 'Temple', 'Theater', 'Thriller', 'Tomb', 'Tool', 'Town', 'Tree', 'Universe', 'Vampire', 'Vehicle', 'Village', 'Villain', 'Void', 'Werewolf', 'Western', 'Witch', 'Wizard', 'Woman', 'World', 'Writer'))
+$subjectDropdown.Items.AddRange((@('Abyss', 'Action', 'Actor', 'Adventure', 'Alien', 'Animal', 'Apartment', 'Appliance', 'Artist', 'Athlete', 'Baby', 'Bar', 'Beach', 'Bear', 'Bedroom', 'Biopic', 'Brotherhood', 'Building', 'Businessperson', 'Castle', 'Cat', 'Cave', 'Chef', 'Church', 'City', 'Club', 'Conflict', 'Continent', 'Country', 'Cowboy', 'Crime', 'Criminal', 'Dancer', 'Desert', 'Detective', 'Devil', 'Dining', 'Documentary', 'Drama', 'Drink', 'Earth', 'Equality', 'Family', 'Fight', 'Flower', 'Food', 'Forest', 'Fraternity', 'Fruit', 'Furniture', 'Galaxy', 'Girl', 'Grave', 'Heaven', 'Hell', 'Hero', 'Hospital', 'House', 'Island', 'Kitchen', 'Lake', 'Limbo', 'Man', 'Moon', 'Mosque', 'Mountain', 'Museum', 'Musician', 'Ninja', 'Nurse', 'Ocean', 'Office', 'Palace', 'Paradise', 'Park', 'Pirate', 'Planet', 'Plant', 'Politician', 'Purgatory', 'Restaurant', 'River', 'Robot', 'Room', 'Ruin', 'Rural', 'Sasquatch', 'School', 'Scientist', 'Shrine', 'Sisterhood', 'Soldier', 'Sorcerer', 'Spy', 'Star', 'Store', 'Student', 'Synagogue', 'Teacher', 'Temple', 'Theater', 'Thriller', 'Tomb', 'Tool', 'Town', 'Tree', 'Universe', 'Vampire', 'Vehicle', 'Village', 'Villain', 'Void', 'Werewolf', 'Western', 'Witch', 'Wizard', 'Woman', 'World', 'Writer') | Sort-Object))
 
 # Create dropdown for Action
 $actionLabel = New-Object System.Windows.Forms.Label
@@ -37,7 +115,7 @@ $actionLabel.AutoSize = $true
 $actionLabel.Location = New-Object System.Drawing.Point(10, 60)
 $actionDropdown = New-Object System.Windows.Forms.ComboBox
 $actionDropdown.Location = New-Object System.Drawing.Point(10, 80)
-$actionDropdown.Items.AddRange(@('agreeing', 'arguing', 'bargaining', 'betraying', 'blackmailing', 'bribing', 'bullying', 'buying', 'celebrating', 'chatting', 'cheating', 'cleaning', 'climbing', 'competing', 'compromising', 'conspiring', 'cooking', 'cooperating', 'corrupting', 'dancing', 'debating', 'decorating', 'defending', 'destroying', 'discussing', 'drinking', 'driving', 'eating', 'editing', 'escaping', 'exercising', 'experimenting', 'explaining', 'failing', 'fighting', 'filming', 'fishing', 'flying', 'gardening', 'harassing', 'hiding', 'hunting', 'intimidating', 'investing', 'jumping', 'learning', 'listening', 'logging', 'losing', 'lying', 'manufacturing', 'meditating', 'meeting', 'mining', 'mourning', 'murdering', 'negotiating', 'painting', 'photographing', 'planning', 'playing', 'plotting', 'praying', 'processing', 'protecting', 'reading', 'relaxing', 'repairing', 'researching', 'riding', 'rolling', 'running', 'saving', 'scheming', 'sculpting', 'selling', 'shopping', 'singing', 'sitting', 'sleeping', 'smoking', 'spending', 'standing', 'stealing', 'studying', 'succeeding', 'swimming', 'talking', 'teaching', 'thinking', 'training', 'trading', 'trapping', 'traveling', 'visiting', 'walking', 'wasting', 'watching', 'winning', 'working', 'writing'))
+$actionDropdown.Items.AddRange((@('agreeing', 'arguing', 'bargaining', 'betraying', 'blackmailing', 'bribing', 'bullying', 'buying', 'celebrating', 'chatting', 'cheating', 'cleaning', 'climbing', 'competing', 'compromising', 'conspiring', 'cooking', 'cooperating', 'corrupting', 'dancing', 'debating', 'decorating', 'defending', 'destroying', 'discussing', 'drinking', 'driving', 'eating', 'editing', 'escaping', 'exercising', 'experimenting', 'explaining', 'failing', 'fighting', 'filming', 'fishing', 'flying', 'gardening', 'harassing', 'hiding', 'hunting', 'intimidating', 'investing', 'jumping', 'learning', 'listening', 'logging', 'losing', 'lying', 'manufacturing', 'meditating', 'meeting', 'mining', 'mourning', 'murdering', 'negotiating', 'painting', 'photographing', 'planning', 'playing', 'plotting', 'praying', 'processing', 'protecting', 'reading', 'relaxing', 'repairing', 'researching', 'riding', 'rolling', 'running', 'saving', 'scheming', 'sculpting', 'selling', 'shopping', 'singing', 'sitting', 'sleeping', 'smoking', 'spending', 'standing', 'stealing', 'studying', 'succeeding', 'swimming', 'talking', 'teaching', 'thinking', 'training', 'trading', 'trapping', 'traveling', 'visiting', 'walking', 'wasting', 'watching', 'winning', 'working', 'writing') | Sort-Object))
 
 # Create dropdown for Style
 $styleLabel = New-Object System.Windows.Forms.Label
@@ -46,7 +124,7 @@ $styleLabel.AutoSize = $true
 $styleLabel.Location = New-Object System.Drawing.Point(10, 110)
 $styleDropdown = New-Object System.Windows.Forms.ComboBox
 $styleDropdown.Location = New-Object System.Drawing.Point(10, 130)
-$styleDropdown.Items.AddRange(@('4k resolution','8k resolution','abstract','abstract expressionist','action','action painter','anime','cartoon','color field','comic book','computer-generated','cubist','cyberpunk','dadaist','digital','documentary','dystopian','expressionistic','extremely detailed','fantasy','far eastern','fauvist','film','fine art','futuristic','graffiti','hand-drawn','hard edge','horror','hyper-realistic','hyperrealist','impressionistic','industrial','low poly','manga','mechanical','minimalist','modern','natural','noir','op art','organic','period','photo-realistic','photorealist','pointillist','pop art','postapocalyptic','realist','realistic','rural','sci-fi','soft edge','steampunk','street art','studio extra','surreal','surreal fantastic realist','surreal realist','surrealist','superrealist','thriller','traditional','urban','utopian','visionary realist','western'))
+$styleDropdown.Items.AddRange((@('4k resolution','8k resolution','abstract','abstract expressionist','action','action painter','anime','cartoon','color field','comic book','computer-generated','cubist','cyberpunk','dadaist','digital','documentary','dystopian','expressionistic','extremely detailed','fantasy','far eastern','fauvist','film','fine art','futuristic','graffiti','hand-drawn','hard edge','horror','hyper-realistic','hyperrealist','impressionistic','industrial','low poly','manga','mechanical','minimalist','modern','natural','noir','op art','organic','period','photo-realistic','photorealist','pointillist','pop art','postapocalyptic','realist','realistic','rural','sci-fi','soft edge','steampunk','street art','studio extra','surreal','surreal fantastic realist','surreal realist','surrealist','superrealist','thriller','traditional','urban','utopian','visionary realist','western') | Sort-Object))
 
 # Create dropdown for Media
 $mediaLabel = New-Object System.Windows.Forms.Label
@@ -55,7 +133,7 @@ $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(10, 160)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(10, 180)
-$mediaDropdown.Items.AddRange(@('painting', 'sculpture', 'photography', 'printmaking', 'drawing', 'digital art', 'film', 'performance art', 'ceramics', 'fiber art', 'glass art', 'jewelry', 'metalworking', 'woodworking', 'mixed media', 'installation art', 'land art', 'conceptual art', 'video art', 'sound art', 'textile arts', 'mosaic', 'calligraphy', 'graffiti', 'comic art', 'sand art', 'ice sculpture', 'origami', 'shadow art', '3d printing art', 'bio art', 'eco art', 'food art', 'neon art', 'paper art', 'street art', 'tape art', 'body art', 'light art', 'miniature art', 'artistic bookbinding', 'pyrography', 'art toys', 'balloon art', 'latte art', 'nail art', 'makeup art', 'floral design', 'sandcastle building', 'snow sculpting', 'topiary', 'toy design', 'virtual art', 'augmented reality art', 'virtual reality art', 'algorithmic art', 'ascii art', 'biofeedback art', 'fractal art', 'generative art', 'glitch art', 'holography', 'interactive art', 'kinetic art', 'laser art', 'light painting', 'mathematical art', 'optical art', 'robotic art', 'software art', 'space art', 'synesthetic art', 'vaporwave art', 'virtual world art', 'visionary art', 'wearable art'))
+$mediaDropdown.Items.AddRange((@('painting', 'sculpture', 'photography', 'printmaking', 'drawing', 'digital art', 'film', 'performance art', 'ceramics', 'fiber art', 'glass art', 'jewelry', 'metalworking', 'woodworking', 'mixed media', 'installation art', 'land art', 'conceptual art', 'video art', 'sound art', 'textile arts', 'mosaic', 'calligraphy', 'graffiti', 'comic art', 'sand art', 'ice sculpture', 'origami', 'shadow art', '3d printing art', 'bio art', 'eco art', 'food art', 'neon art', 'paper art', 'street art', 'tape art', 'body art', 'light art', 'miniature art', 'artistic bookbinding', 'pyrography', 'art toys', 'balloon art', 'latte art', 'nail art', 'makeup art', 'floral design', 'sandcastle building', 'snow sculpting', 'topiary', 'toy design', 'virtual art', 'augmented reality art', 'virtual reality art', 'algorithmic art', 'ascii art', 'biofeedback art', 'fractal art', 'generative art', 'glitch art', 'holography', 'interactive art', 'kinetic art', 'laser art', 'light painting', 'mathematical art', 'optical art', 'robotic art', 'software art', 'space art', 'synesthetic art', 'vaporwave art', 'virtual world art', 'visionary art', 'wearable art') | Sort-Object))
 
 # Create dropdown for Extra
 $extraLabel = New-Object System.Windows.Forms.Label
@@ -64,8 +142,7 @@ $extraLabel.AutoSize = $true
 $extraLabel.Location = New-Object System.Drawing.Point(10, 210)
 $extraDropdown = New-Object System.Windows.Forms.ComboBox
 $extraDropdown.Location = New-Object System.Drawing.Point(10, 230)
-# Add more extra words here
-$extraDropdown.Items.AddRange(@('abstract', 'art deco', 'art nouveau', 'baroque', 'classicism', 'conceptual art', 'constructivism', 'cubism', 'dadaism', 'expressionism', 'fauvism', 'futurism', 'impressionism', 'minimalism', 'modernism', 'neo-classicism', 'neo-expressionism', 'op art', 'pop art', 'post-impressionism', 'realism', 'renaissance', 'rococo', 'romanticism', 'surrealism', 'symbolism', 'vorticism'))
+$extraDropdown.Items.AddRange((@('abstract', 'art deco', 'art nouveau', 'baroque', 'classicism', 'conceptual art', 'constructivism', 'cubism', 'dadaism', 'expressionism', 'fauvism', 'futurism', 'impressionism', 'minimalism', 'modernism', 'neo-classicism', 'neo-expressionism', 'op art', 'pop art', 'post-impressionism', 'realism', 'renaissance', 'rococo', 'romanticism', 'surrealism', 'symbolism', 'vorticism') | Sort-Object))
 
 # Create dropdown for Color
 $colorLabel = New-Object System.Windows.Forms.Label
@@ -74,17 +151,33 @@ $colorLabel.AutoSize = $true
 $colorLabel.Location = New-Object System.Drawing.Point(10, 260)
 $colorDropdown = New-Object System.Windows.Forms.ComboBox
 $colorDropdown.Location = New-Object System.Drawing.Point(10, 280)
-# Add more extra words here
-$colorDropdown.Items.AddRange(@('autumn color palette', 'winter color palette','spring color palette','summer color palette','black and white','monochrome','sepia','pastel','neon','primary colors','secondary colors','tertiary colors','complementary colors','analogous colors','triadic colors','split-complementary colors','tetradic colors','warm colors','cool colors','neutral colors','earth tones','jewel tones','bright colors','dark colors','light colors','muted colors','saturated colors','desaturated colors','vibrant colors','dull colors','light color palette','dark color palette','bright color palette','muted color palette','saturated color palette','desaturated','color palette','vibrant color palette','dull color palette','light color scheme','dark color scheme','bright color scheme','muted color scheme','saturated color scheme','desaturated color scheme','vibrant color scheme','dull color scheme','light color combination','dark color combination','bright color combination','muted color combination','saturated color combination','desaturated color combination','vibrant color combination','dull color combination'))
+$colorDropdown.Items.AddRange((@('autumn colors', 'winter colors','spring colors','summer colors','black and white','monochrome','sepia','pastel','neon','primary colors','secondary colors','tertiary colors', 'complementary colors','analogous colors','triadic colors','split-complementary colors','tetradic colors','warm colors','cool colors','neutral colors','earth tones','jewel tones','dark colors','light colors', 'muted colors','saturated colors','desaturated colors','vibrant colors','dull colors','bright colors','light color palette','dark color palette', 'bright color palette','muted color palette','saturated color palette','desaturated color palette','vibrant color palette','dull color palette') | Sort-Object))
 
 # When the Random button is clicked, set the selected item to the random one
+# Create Random button
+$randomButton = New-Object System.Windows.Forms.Button
+$randomButton.Text = 'Random'
+$randomButton.Location = New-Object System.Drawing.Point(10, 310)
+
 $randomButton.Add_Click({
-    $subjectDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $subjectDropdown.Items.Count
-    $styleDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $styleDropdown.Items.Count
-    $mediaDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $mediaDropdown.Items.Count
-    $actionDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $actionDropdown.Items.Count
-    $extraDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $extraDropdown.Items.Count
-    $colorDropdown.SelectedIndex = Get-Random -Minimum 1 -Maximum $colorDropdown.Items.Count
+    if ($subjectDropdown.Items.Count -gt 0) {
+        $subjectDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $subjectDropdown.Items.Count
+    }
+    if ($styleDropdown.Items.Count -gt 0) {
+        $styleDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $styleDropdown.Items.Count
+    }
+    if ($mediaDropdown.Items.Count -gt 0) {
+        $mediaDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $mediaDropdown.Items.Count
+    }
+    if ($actionDropdown.Items.Count -gt 0) {
+        $actionDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $actionDropdown.Items.Count
+    }
+    if ($extraDropdown.Items.Count -gt 0) {
+        $extraDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $extraDropdown.Items.Count
+    }
+    if ($colorDropdown.Items.Count -gt 0) {
+        $colorDropdown.SelectedIndex = Get-Random -Minimum 0 -Maximum $colorDropdown.Items.Count
+    }
 })
 
 # Enable auto-complete mode for dropdowns
@@ -130,7 +223,9 @@ $button.Add_Click({
     $clipboardText = [string]::Join(', ', $selectedWords)
     $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
     Set-Clipboard -Value $clipboardText
-    $copiedTextbox.Text = $clipboardText
+    if ($clipboardText) {
+        $copiedTextbox.Text = $clipboardText
+    }
 })
 
 # Create "Random" button
@@ -149,7 +244,11 @@ $randomButton.Add_Click({
     $clipboardText = [string]::Join(', ', $selectedWords)
     if ($clipboardText) {
         $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
-        Set-Clipboard -Value $clipboardText
+        try {
+            Set-Clipboard -Value $clipboardText
+        } catch {
+            [System.Windows.Forms.MessageBox]::Show("An error occurred while setting the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        }
         $copiedTextbox.Text = $clipboardText
     }
 })
@@ -182,40 +281,23 @@ $webButton.Location = New-Object System.Drawing.Point(200, 240)
 $webButton.Size = New-Object System.Drawing.Size(75, 75)
 $webButton.Add_Click({
 
-    try {
-        # Capture the currently chosen items from the dropdowns
-        $selectedWords = @()
-        if ($subjectDropdown.SelectedItem) { $selectedWords += $subjectDropdown.SelectedItem }
-        if ($styleDropdown.SelectedItem) { $selectedWords += $styleDropdown.SelectedItem }
-        if ($mediaDropdown.SelectedItem) { $selectedWords += $mediaDropdown.SelectedItem }
-        if ($actionDropdown.SelectedItem) { $selectedWords += $actionDropdown.SelectedItem }
-        if ($extraDropdown.SelectedItem) { $selectedWords += $extraDropdown.SelectedItem }
-        if ($colorDropdown.SelectedItem) { $selectedWords += $colorDropdown.SelectedItem }
-        $clipboardText = [string]::Join(', ', $selectedWords)
-        if ($clipboardText) {
-            $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
-            Set-Clipboard -Value $clipboardText
-            $copiedTextbox.Text = $clipboardText
-        }
+    # Get the current clipboard text
+    $clipboardText = Get-Clipboard
 
-        # Open the website with the generated text
-        $formattedText = Format-ForURL -text $copiedTextbox.Text
-        $url = $baseURL + $formattedText
-        Start-Process $url
-    } catch {
-        [System.Windows.Forms.MessageBox]::Show("An error occurred: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    if ($clipboardText) {
+        $copiedTextbox.Text = $clipboardText
+    } else {
+        [System.Windows.Forms.MessageBox]::Show("Clipboard is empty. Please select at least one item.", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        return
     }
+
+    # Open the website with the clipboard text
+    $formattedText = Format-ForURL -text $copiedTextbox.Text
+    $url = $baseURL + $formattedText
+    Start-Process $url
 })
 
-# Create label and textbox to display copied text
-$copiedLabel = New-Object System.Windows.Forms.Label
-$copiedLabel.Text = 'Current Prompt'
-$copiedLabel.AutoSize = $true
-$copiedLabel.Location = New-Object System.Drawing.Point(10, 320)
-$copiedTextbox = New-Object System.Windows.Forms.TextBox
-$copiedTextbox.Location = New-Object System.Drawing.Point(10, 340)
-$copiedTextbox.ReadOnly = $true
-$copiedTextbox.Size = New-Object System.Drawing.Size(500, 100)
+
 
 # Add the selected items from the Dropdowns to the selectedWords array
 if ($colorDropdown.Text) { $selectedWords += $colorDropdown.Text }
@@ -242,6 +324,9 @@ $form.FormBorderStyle = 'FixedDialog'
 
 # Add the label to the form controls
 $form.Controls.Add($copiedLabel)
+
+# Add the clear button to the form controls
+$form.Controls.Add($clearButton)
 
 # Show form
 $form.ShowDialog()

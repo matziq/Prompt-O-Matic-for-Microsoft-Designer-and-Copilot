@@ -48,25 +48,6 @@ $clearButton.Add_Click({
     }
 })
 
-# Create a button to reset the dropdown boxes
-$resetButton = New-Object System.Windows.Forms.Button
-$resetButton.Location = New-Object System.Drawing.Point(400, 30)
-$resetButton.Size = New-Object System.Drawing.Size(75, 75)
-$resetButton.Text = "Reset Dropdowns"
-
-# Add click event to the reset button
-$resetButton.Add_Click({
-    $subjectDropdown.SelectedIndex = -1
-    $actionDropdown.SelectedIndex = -1
-    $styleDropdown.SelectedIndex = -1
-    $mediaDropdown.SelectedIndex = -1
-    $colorDropdown.SelectedIndex = -1
-    $extraDropdown.SelectedIndex = -1
-})
-
-# Add the reset button to the form
-$form.Controls.Add($resetButton)
-
 # Create label and textbox to display copied text
 $copiedLabel = New-Object System.Windows.Forms.Label
 $copiedLabel.Text = 'Current Prompt in the Clipboard'
@@ -98,7 +79,7 @@ $subjectLabel.AutoSize = $true
 $subjectLabel.Location = New-Object System.Drawing.Point(10, 10)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(10, 30)
-$subjectdropdown.items.addrange((@('the avengers', 'batman', 'joker', 'cat woman', 'hobbit', 'elf', 'abyss', 'action', 'actor', 'adventure', 'alien', 'animal', 'apartment', 'appliance', 'artist', 'athlete', 'baby', 'bar', 'beach', 'bear', 'bedroom', 'biopic', 'brotherhood', 'building', 'businessperson', 'castle', 'cat', 'cave', 'chef', 'church', 'city', 'club', 'conflict', 'continent', 'country', 'cowboy', 'crime', 'criminal', 'dancer', 'desert', 'dessert', 'detective', 'devil', 'dining', 'documentary', 'drama', 'drink', 'earth', 'equality', 'family', 'fight', 'flower', 'food', 'forest', 'fraternity', 'fruit', 'furniture', 'galaxy', 'girl', 'grave', 'heaven', 'hell', 'hero', 'hospital', 'house', 'island', 'kitchen', 'lake', 'limbo', 'man', 'moon', 'mosque', 'mountain', 'museum', 'musician', 'ninja', 'nurse', 'ocean', 'office', 'palace', 'paradise', 'park', 'pirate', 'planet', 'plant', 'politician', 'purgatory', 'restaurant', 'river', 'robot', 'room', 'ruin', 'rural', 'sasquatch', 'school', 'scientist', 'shrine', 'sisterhood', 'soldier', 'star', 'store', 'synagogue', 'teacher', 'temple', 'thriller', 'tomb', 'town', 'tree', 'universe', 'vampire', 'vehicle', 'village', 'villain', 'werewolf', 'western', 'witch', 'wizard', 'woman', 'world', 'writer','sorcerer', 'spy','student', 'theater', 'tool', 'void') | sort-object -Unique))
+$subjectdropdown.items.addrange((@('the avengers', 'batman', 'joker', 'cat woman', 'hobbit', 'elf', 'abyss', 'actor', 'adventure', 'alien', 'animal', 'apartment', 'appliance', 'artist', 'athlete', 'baby', 'bar', 'beach', 'bear', 'bedroom', 'brotherhood', 'building', 'businessperson', 'castle', 'cat', 'cave', 'chef', 'church', 'city', 'club', 'conflict', 'continent', 'country', 'cowboy', 'crime', 'criminal', 'dancer', 'desert', 'dessert', 'detective', 'devil', 'dining', 'documentary', 'drink', 'earth', 'equality', 'family', 'fight', 'flower', 'food', 'forest', 'fraternity', 'fruit', 'furniture', 'galaxy', 'girl', 'grave', 'heaven', 'hell', 'hero', 'hospital', 'house', 'island', 'kitchen', 'lake', 'limbo', 'man', 'moon', 'mosque', 'mountain', 'museum', 'musician', 'ninja', 'nurse', 'ocean', 'office', 'palace', 'paradise', 'park', 'picture', 'photograph', 'pirate', 'planet', 'plant', 'politician', 'purgatory', 'restaurant', 'river', 'robot', 'room', 'ruin', 'rural', 'sasquatch', 'school', 'scientist', 'shrine', 'sisterhood', 'soldier', 'star', 'store', 'synagogue', 'teacher', 'temple', 'thriller', 'tomb', 'town', 'tree', 'universe', 'vampire', 'vehicle', 'village', 'villain', 'werewolf', 'western', 'witch', 'wizard', 'woman', 'world', 'writer','sorcerer', 'spy','student', 'theater', 'tool', 'void', 'godzilla', 'alligator', 'crocodile', 'kitten', 'seal', 'whale', 'bat', 'cave', 'gazelle', 'top gun') | sort-object -Unique))
 
 # Create dropdown for Action
 $actionLabel = New-Object System.Windows.Forms.Label
@@ -125,7 +106,7 @@ $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(10, 160)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(10, 180)
-$mediaDropdown.Items.AddRange((@('watercolors','pastels', 'acrylics', 'pencils', 'charcoal', 'markers', 'colored pencils', 'ink', 'mixed media', 'clay', 'found objects', 'light', 'oil paints', 'crayons', 'clay', 'marble', 'gravel', 'mud', 'butter', 'feathers', 'yarn', 'film', 'newspaper', 'pencil','ceramics', 'fiber', 'glass', 'jewelry', 'metal', 'wood', 'mixed', 'papermache', 'plaster of paris', 'video', 'textiles', 'mosaics', 'spray paint', 'sand', 'ice','shadows', 'filament', 'biologics', 'food', 'neon lights', 'paper', 'candy', 'rubber ducks', 'snakes', 'tape', 'ink', 'lights', 'miniatures', 'flames', 'fire', 'toys', 'balloons', 'foam', 'nailpolish', 'garbage', 'trash', 'makeup', 'flowers', 'snow', 'virtual reality', 'augmented reality', 'algorithms', 'ascii', 'biofeedback', 'fractals', 'generative', 'glitch', 'holography', 'lasers', 'lights', 'mathematics', 'optics', 'fiber optics', 'robotics', 'software', 'synesthetics', 'sand', 'wire sculpture', 'stained glass', 'encaustic', 'enamel', 'batik', 'mosaic', 'collage', 'assemblage', 'kinetics', 'found objects', 'body paint', 'video', 'computer', 'text', 'ascii characters', 'webdings', 'emojis', 'ceramics', 'textiles', 'fibers', 'jewelry', 'metalworking', 'woodworking', 'glass', 'pottery', 'paper', 'origami', 'collage', 'mosaic', 'tapestry', 'embroider', 'thread', 'beads', 'leather', 'wicker', 'wax', 'soap', 'flowers', 'frosting') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
+$mediaDropdown.Items.AddRange((@('watercolors','pastels', 'acrylics', 'pencils', 'charcoal', 'markers', 'colored pencils', 'ink', 'mixed media', 'clay', 'found objects', 'light', 'oil paints', 'crayons', 'clay', 'marble', 'gravel', 'mud', 'butter', 'feathers', 'yarn', 'film', 'newspaper', 'pencil','ceramics', 'fiber', 'glass', 'jewelry', 'metal', 'wood', 'mixed', 'papermache', 'plaster of paris', 'video', 'textiles', 'mosaics', 'spray paint', 'sand', 'ice','shadows', 'filament', 'biologics', 'food', 'neon lights', 'paper', 'candy', 'rubber ducks', 'snakes', 'tape', 'ink', 'lights', 'miniatures', 'flames', 'fire', 'toys', 'balloons', 'foam', 'nailpolish', 'garbage', 'trash', 'makeup', 'flowers', 'snow', 'virtual reality', 'augmented reality', 'algorithms', 'ascii', 'biofeedback', 'fractals', 'generative', 'glitch', 'holography', 'lasers', 'lights', 'mathematics', 'optics', 'fiber optics', 'robotics', 'software', 'synesthetics', 'sand', 'wire sculpture', 'stained glass', 'encaustic', 'enamel', 'batik', 'collage', 'assemblage', 'kinetics', 'found objects', 'body paint', 'video', 'computer', 'text', 'ascii characters', 'webdings', 'emojis', 'ceramics', 'textiles', 'fibers', 'jewelry', 'metalworking', 'woodworking', 'glass', 'pottery', 'paper', 'collage', 'mosaic', 'tapestry', 'embroider', 'thread', 'beads', 'leather', 'wicker', 'wax', 'soap', 'flowers', 'frosting','enamel', 'batik', 'collage', 'assemblage', 'kinetics', 'found objects', 'body paint', 'video', 'computer', 'text', 'ascii characters', 'webdings', 'emojis', 'ceramics', 'textiles', 'fibers', 'jewelry', 'metalworking', 'woodworking', 'glass', 'pottery', 'paper', 'origami', 'collage', 'tapestry', 'embroider', 'thread', 'beads', 'leather', 'wicker', 'wax', 'soap', 'flowers', 'frosting') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
 
 # Create dropdown for Color
 $colorLabel = New-Object System.Windows.Forms.Label
@@ -148,16 +129,22 @@ $extraDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme clo
 # Enable auto-complete mode for dropdowns
 $subjectDropdown.AutoCompleteMode = 'SuggestAppend'
 $subjectDropdown.AutoCompleteSource = 'ListItems'
+$subjectDropdown.DropDownStyle = 'DropDown'
 $actionDropdown.AutoCompleteMode = 'SuggestAppend'
 $actionDropdown.AutoCompleteSource = 'ListItems'
+$actionDropdown.DropDownStyle = 'DropDown'
 $styleDropdown.AutoCompleteMode = 'SuggestAppend'
 $styleDropdown.AutoCompleteSource = 'ListItems'
+$styleDropdown.DropDownStyle = 'DropDown'
 $mediaDropdown.AutoCompleteMode = 'SuggestAppend'
 $mediaDropdown.AutoCompleteSource = 'ListItems'
+$mediaDropdown.DropDownStyle = 'DropDown'
 $colorDropdown.AutoCompleteMode = 'SuggestAppend'
 $colorDropdown.AutoCompleteSource = 'ListItems'
+$colorDropdown.DropDownStyle = 'DropDown'
 $extraDropdown.AutoCompleteMode = 'SuggestAppend'
 $extraDropdown.AutoCompleteSource = 'ListItems'
+$extraDropdown.DropDownStyle = 'DropDown'
 
 # Create button to copy to clipboard
 $button = New-Object System.Windows.Forms.Button
@@ -251,6 +238,37 @@ if ($mediaDropdown.Text) { $selectedWords += $mediaDropdown.Text }
 if ($colorDropdown.Text) { $selectedWords += $colorDropdown.Text }
 if ($extraDropdown.Text) { $selectedWords += $extraDropdown.Text }
 
+# Create a button to reset the dropdown boxes
+$resetButton = New-Object System.Windows.Forms.Button
+$resetButton.Location = New-Object System.Drawing.Point(400, 30)
+$resetButton.Size = New-Object System.Drawing.Size(75, 75)
+$resetButton.Text = "Reset Dropdowns"
+
+# Add click event to the reset button
+$resetButton.Add_Click({
+    if ($subjectDropdown.Items.Count -gt 0) {
+        $subjectDropdown.SelectedIndex = -1
+    }
+    if ($actionDropdown.Items.Count -gt 0) {
+        $actionDropdown.SelectedIndex = -1
+    }
+    if ($styleDropdown.Items.Count -gt 0) {
+        $styleDropdown.SelectedIndex = -1
+    }
+    if ($mediaDropdown.Items.Count -gt 0) {
+        $mediaDropdown.SelectedIndex = -1
+    }
+    if ($colorDropdown.Items.Count -gt 0) {
+        $colorDropdown.SelectedIndex = -1
+    }
+    if ($extraDropdown.Items.Count -gt 0) {
+        $extraDropdown.SelectedIndex = -1
+    }
+})
+
+# Add the reset button to the form
+$form.Controls.Add($resetButton)
+
 # Add the web button to the form controls
 $form.Controls.Add($webButton)
 $form.StartPosition = 'CenterScreen'
@@ -261,16 +279,16 @@ $form.Controls.Add($randomButton)
 $form.StartPosition = 'CenterScreen'
 $form.FormBorderStyle = 'FixedDialog'
 
-# Add controls to form
-$form.Controls.AddRange(@($subjectLabel, $subjectDropdown, $actionLabel, $actionDropdown, $styleLabel, $styleDropdown, $mediaLabel, $mediaDropdown, $colorLabel, $colorDropdown, $extraLabel, $extraDropdown, $button, $copiedLabel, $copiedTextbox))
-$form.StartPosition = 'CenterScreen'
-$form.FormBorderStyle = 'FixedDialog'
-
 # Add the label to the form controls
 $form.Controls.Add($copiedLabel)
 
 # Add the clear button to the form controls
 $form.Controls.Add($clearButton)
+
+# Add controls to form
+$form.Controls.AddRange(@($subjectLabel, $subjectDropdown, $actionLabel, $actionDropdown, $styleLabel, $styleDropdown, $mediaLabel, $mediaDropdown, $colorLabel, $colorDropdown, $extraLabel, $extraDropdown, $button, $copiedLabel, $copiedTextbox))
+$form.StartPosition = 'CenterScreen'
+$form.FormBorderStyle = 'FixedDialog'
 
 # Show form
 $form.ShowDialog()

@@ -1,7 +1,7 @@
 <#
 Author: John Rea
-Date: April 19, 2024
-Version: 1.1
+Date: April 21, 2024
+Version: 1.2
 #>
 
 #Adds the System.Windows.Forms assembly.
@@ -228,6 +228,11 @@ $webButton.Add_Click({
     $formattedText = Format-ForURL -text $copiedTextbox.Text
     $url = $baseURL + $formattedText
     Start-Process $url
+
+    # Log the clipboard text to a file
+    $logFile = "prompt.log"
+    Add-Content -Path $logFile -Value $clipboardText
+
 })
 
 # Add the selected items from the Dropdowns to the selectedWords array

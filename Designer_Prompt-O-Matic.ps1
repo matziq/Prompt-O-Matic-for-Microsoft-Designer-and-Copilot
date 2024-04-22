@@ -191,24 +191,37 @@ $randomButton.Text = 'Random Prompt Generator'
 $randomButton.Location = New-Object System.Drawing.Point(230, 30)
 $randomButton.Size = New-Object System.Drawing.Size(150, 180)
 $randomButton.Add_Click({
-    $selectedWords = @()
-    $selectedWords += $subjectDropdown.Items | Get-Random
-    $selectedWords += $actionDropdown.Items | Get-Random
-    $selectedWords += $styleDropdown.Items | Get-Random
-    $selectedWords += $mediaDropdown.Items | Get-Random
-    $selectedWords += $colorDropdown.Items | Get-Random
-    $selectedWords += $extraADropdown.Items | Get-Random
-    $selectedWords += $extraBDropdown.Items | Get-Random
-    $selectedWords += $extraCDropdown.Items | Get-Random
-    $clipboardText = [string]::Join(', ', $selectedWords)
-    if ($clipboardText) {
-        $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
-        try {
-            Set-Clipboard -Value $clipboardText
-        } catch {
-            [System.Windows.Forms.MessageBox]::Show("An error occurred while setting the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    $confirmation = [System.Windows.Forms.MessageBox]::Show("Are you sure you want to generate a random prompt?", "Confirmation", [System.Windows.Forms.MessageBoxButtons]::YesNo, [System.Windows.Forms.MessageBoxIcon]::Question)
+    if ($confirmation -eq "Yes") {
+        $selectedWords = @()
+        $selectedWords += $subjectDropdown.Items | Get-Random
+        $selectedWords += $actionDropdown.Items | Get-Random
+        $selectedWords += $styleDropdown.Items | Get-Random
+        $selectedWords += $mediaDropdown.Items | Get-Random
+        $selectedWords += $colorDropdown.Items | Get-Random
+        $selectedWords += $extraADropdown.Items | Get-Random
+        $selectedWords += $extraBDropdown.Items | Get-Random
+        $selectedWords += $extraCDropdown.Items | Get-Random
+        $clipboardText = [string]::Join(', ', $selectedWords)
+        if ($clipboardText) {
+            $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
+            try {
+                Set-Clipboard -Value $clipboardText
+            } catch {
+                [System.Windows.Forms.MessageBox]::Show("An error occurred while setting the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+            }
+            $copiedTextbox.Text = $clipboardText
         }
-        $copiedTextbox.Text = $clipboardText
+
+        # Update the dropdown fields in the GUI
+        $subjectDropdown.SelectedItem = $selectedWords[0]
+        $actionDropdown.SelectedItem = $selectedWords[1]
+        $styleDropdown.SelectedItem = $selectedWords[2]
+        $mediaDropdown.SelectedItem = $selectedWords[3]
+        $colorDropdown.SelectedItem = $selectedWords[4]
+        $extraADropdown.SelectedItem = $selectedWords[5]
+        $extraBDropdown.SelectedItem = $selectedWords[6]
+        $extraCDropdown.SelectedItem = $selectedWords[7]
     }
 })
 
@@ -267,29 +280,32 @@ $resetButton.Text = "Reset Dropdowns"
 
 # Add click event to the reset dropdown boxes button
 $resetButton.Add_Click({
-    if ($subjectDropdown.Items.Count -gt 0) {
-        $subjectDropdown.SelectedIndex = -1
-    }
-    if ($actionDropdown.Items.Count -gt 0) {
-        $actionDropdown.SelectedIndex = -1
-    }
-    if ($styleDropdown.Items.Count -gt 0) {
-        $styleDropdown.SelectedIndex = -1
-    }
-    if ($mediaDropdown.Items.Count -gt 0) {
-        $mediaDropdown.SelectedIndex = -1
-    }
-    if ($colorDropdown.Items.Count -gt 0) {
-        $colorDropdown.SelectedIndex = -1
-    }
-    if ($extraADropdown.Items.Count -gt 0) {
-        $extraADropdown.SelectedIndex = -1
-    }
-    if ($extraBDropdown.Items.Count -gt 0) {
-        $extraBDropdown.SelectedIndex = -1
-    }
-    if ($extraCDropdown.Items.Count -gt 0) {
-        $extraCDropdown.SelectedIndex = -1
+    $confirmation = [System.Windows.Forms.MessageBox]::Show("Are you sure you want to reset the dropdown boxes?", "Confirmation", [System.Windows.Forms.MessageBoxButtons]::YesNo, [System.Windows.Forms.MessageBoxIcon]::Question)
+    if ($confirmation -eq "Yes") {
+        if ($subjectDropdown.Items.Count -gt 0) {
+            $subjectDropdown.SelectedIndex = -1
+        }
+        if ($actionDropdown.Items.Count -gt 0) {
+            $actionDropdown.SelectedIndex = -1
+        }
+        if ($styleDropdown.Items.Count -gt 0) {
+            $styleDropdown.SelectedIndex = -1
+        }
+        if ($mediaDropdown.Items.Count -gt 0) {
+            $mediaDropdown.SelectedIndex = -1
+        }
+        if ($colorDropdown.Items.Count -gt 0) {
+            $colorDropdown.SelectedIndex = -1
+        }
+        if ($extraADropdown.Items.Count -gt 0) {
+            $extraADropdown.SelectedIndex = -1
+        }
+        if ($extraBDropdown.Items.Count -gt 0) {
+            $extraBDropdown.SelectedIndex = -1
+        }
+        if ($extraCDropdown.Items.Count -gt 0) {
+            $extraCDropdown.SelectedIndex = -1
+        }
     }
 })
 
@@ -301,13 +317,16 @@ $clearButton.Text = "Clear Clipboard"
 
 # Add click event to the clear button
 $clearButton.Add_Click({
-    try {
-        if ([System.Windows.Forms.Clipboard]::ContainsText()) {
-            [System.Windows.Forms.Clipboard]::Clear()
-            $copiedTextbox.Text = ""
+    $confirmation = [System.Windows.Forms.MessageBox]::Show("Are you sure you want to clear the clipboard?", "Confirmation", [System.Windows.Forms.MessageBoxButtons]::YesNo, [System.Windows.Forms.MessageBoxIcon]::Question)
+    if ($confirmation -eq "Yes") {
+        try {
+            if ([System.Windows.Forms.Clipboard]::ContainsText()) {
+                [System.Windows.Forms.Clipboard]::Clear()
+                $copiedTextbox.Text = ""
+            }
+        } catch {
+            [System.Windows.Forms.MessageBox]::Show("An error occurred while clearing the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         }
-    } catch {
-        [System.Windows.Forms.MessageBox]::Show("An error occurred while clearing the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
     }
 })
 

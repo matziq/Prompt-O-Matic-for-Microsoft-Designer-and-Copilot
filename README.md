@@ -1,7 +1,6 @@
 # Prompt-O-Matic-for-Microsoft-Designer 
 # A Simple GUI that lets you choose subject, action, artistic style, media, and extras to form a prompt to use with Microsoft Designer. 
 # Designer utlizies DAL-E 3 on the backend but on the front end, Designer improves the prompt so that DAL-E provides better results.
-
-![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/08a02b9f-37c5-4a0e-8c3d-7b36c8189c9f)
-![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6eaf488e-06ec-4640-934e-aebb75d7234f)
-![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/fd27d45f-21ed-48b6-9177-b3cc39e12535)
+![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4e68ba30-ce52-4c86-8619-e96b30eba0d1)
+![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/994bb855-ce0c-4a75-9db4-7ff45758de48)
+![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6d7957ff-abb2-499d-9eb5-70af773d7f93)

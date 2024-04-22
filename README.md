@@ -6,6 +6,6 @@ There is also a random button that lets you create a random selection from the v
 You can also edit the prompt before you generate the image once you copy the contents of the clipboard to Designer.
 Next up - freezing dropdowns so you can get random results while keeping the ones you like.
 
-![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4e68ba30-ce52-4c86-8619-e96b30eba0d1)
-![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/994bb855-ce0c-4a75-9db4-7ff45758de48)
-![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6d7957ff-abb2-499d-9eb5-70af773d7f93)
+![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/7888513d-58ed-4a7f-b29d-71ae4325a6e8)
+![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/abe1c4a2-75a7-4c2e-ba13-ffc05aa471c6)
+![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/3ee72a4e-021e-4ef6-837d-b11be643ca1c)

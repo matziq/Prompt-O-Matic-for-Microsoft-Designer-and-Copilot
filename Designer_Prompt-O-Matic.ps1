@@ -1,7 +1,7 @@
 <#
 Author: John Rea
-Date: April 21, 2024
-Version: 1.2
+Date: April 23, 2024
+Version: 1.3
 #>
 
 #Adds the System.Windows.Forms assembly.
@@ -10,18 +10,6 @@ Add-Type -AssemblyName System.Windows.Forms
 # Clear the clipboard on launch
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Clipboard]::Clear()
-
-# Define the base URL for the website
-$baseURL = "https://designer.microsoft.com/image-creator?p="
-# Create a function to format the text for the URL
-function Format-ForURL ($text) {
-    try {
-        $text = $text.Replace(' ', '+')
-        return $text
-    } catch {
-        [System.Windows.Forms.MessageBox]::Show("An error occurred while formatting the text: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
-    }
-}
 
 # Create form
 $form = New-Object System.Windows.Forms.Form
@@ -65,7 +53,7 @@ $subjectLabel.AutoSize = $true
 $subjectLabel.Location = New-Object System.Drawing.Point(10, 10)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(10, 30)
-$subjectdropdown.items.addrange((@('cat', 'mountain', 'computer', 'ocean', 'painting', 'city', 'flower', 'book', 'river', 'bicycle', 'forest', 'museum', 'piano', 'island', 'balloon', 'guitar', 'castle', 'train', 'statue', 'garden', 'camera', 'bridge', 'tree', 'beach', 'telescope', 'skyscraper', 'airplane', 'star', 'pyramid', 'lamp', 'volcano', 'cloud', 'temple', 'truck', 'moon', 'waterfall', 'fountain', 'kite', 'sunset', 'helicopter', 'galaxy', 'cliff', 'lighthouse', 'rose', 'dolphin', 'elephant', 'lion', 'tiger', 'penguin', 'whale', 'shark', 'butterfly', 'zebra', 'horse', 'monkey', 'giraffe', 'bear', 'wolf', 'snake', 'eagle', 'parrot', 'owl', 'frog', 'turtle', 'rabbit', 'kangaroo', 'panda', 'alligator', 'crocodile', 'peacock', 'squirrel', 'koala', 'rhinoceros', 'hippopotamus', 'octopus', 'jellyfish', 'coral', 'seashell', 'sand', 'pebble', 'cave', 'iceberg', 'glacier', 'desert', 'canyon', 'plateau', 'valley', 'hill', 'meadow', 'pond', 'stream', 'harbor', 'bay', 'cape', 'peninsula', 'archipelago') | sort-object -Unique))
+$subjectdropdown.items.addrange((@('tesla', 'living room', 'den', 'kitchen', 'bedroom', 'study', 'garage', 'backyard', 'patio', 'cat', 'mountain', 'computer', 'ocean', 'painting', 'city', 'flower', 'book', 'river', 'bicycle', 'forest', 'museum', 'piano', 'island', 'balloon', 'guitar', 'castle', 'train', 'statue', 'garden', 'camera', 'bridge', 'tree', 'beach', 'telescope', 'skyscraper', 'airplane', 'star', 'pyramid', 'lamp', 'volcano', 'cloud', 'temple', 'truck', 'moon', 'waterfall', 'fountain', 'kite', 'sunset', 'helicopter', 'galaxy', 'cliff', 'lighthouse', 'rose', 'dolphin', 'elephant', 'lion', 'tiger', 'penguin', 'whale', 'shark', 'butterfly', 'zebra', 'horse', 'monkey', 'giraffe', 'bear', 'wolf', 'snake', 'eagle', 'parrot', 'owl', 'frog', 'turtle', 'rabbit', 'kangaroo', 'panda', 'alligator', 'crocodile', 'peacock', 'squirrel', 'koala', 'rhinoceros', 'hippopotamus', 'octopus', 'jellyfish', 'coral', 'seashell', 'sand', 'pebble', 'cave', 'iceberg', 'glacier', 'desert', 'canyon', 'plateau', 'valley', 'hill', 'meadow', 'pond', 'stream', 'harbor', 'bay', 'cape', 'peninsula', 'archipelago') | sort-object -Unique))
 
 # Create dropdown for Action
 $actionLabel = New-Object System.Windows.Forms.Label
@@ -83,7 +71,7 @@ $styleLabel.AutoSize = $true
 $styleLabel.Location = New-Object System.Drawing.Point(10, 110)
 $styleDropdown = New-Object System.Windows.Forms.ComboBox
 $styleDropdown.Location = New-Object System.Drawing.Point(10, 130)
-$styleDropdown.Items.AddRange((@('Oil Paint', 'Acrylic Paint', 'Watercolor Paint', 'Gouache Paint', 'Tempera Paint', 'Encaustic', 'Ink', 'Charcoal', 'Graphite', 'Pastel', 'Colored Pencil', 'Silverpoint', 'Clay', 'Metal', 'Wood', 'Stone', 'Marble', 'Bronze', 'Glass', 'Digital Art', 'Collage', 'Textiles', 'Plastics', 'Ceramics', 'Porcelain', 'Mosaic', 'Paper', 'Canvas', 'Leather', 'Fiber', 'Sand', 'Found Objects', 'Light', 'Sound', 'Video', 'Performance Elements', 'Ephemeral Materials', 'Environmental Materials', 'Biological Materials', 'Abstract Art', 'Abstract Expressionism', 'Academic Art', 'Art Deco', 'Art Nouveau', 'Avant-Garde', 'Baroque', 'Bauhaus', 'Classicism', 'CoBrA', 'Color Field Painting', 'Conceptual Art', 'Constructivism', 'Contemporary Art', 'Cubism', 'Dadaism', 'Digital Art', 'Expressionism', 'Fauvism', 'Figurative Art', 'Fine Art', 'Futurism', 'Gothic Art', 'Harlem Renaissance', 'Impressionism', 'Installation Art', 'Land Art', 'Minimalism', 'Modern Art', 'Naïve Art', 'Neo-Impressionism', 'Neoclassicism', 'Neon Art', 'Op Art', 'Photorealism', 'Pop Art', 'Post-Impressionism', 'Precisionism', 'Realism', 'Rococo', 'Street Art', 'Suprematism', 'Surrealism', 'Symbolism', 'Zero Group', 'Caravaggism', 'Rembrandt Lighting', 'Picassian', 'Renaissance', 'Baroque', 'Gothic','Impressionism', 'Expressionism', 'Cubism', 'Fauvism', 'Futurism', 'Dadaism', 'Surrealism', 'Abstract Expressionism', 'Minimalism', 'Pop Art', 'Conceptual Art', 'Op Art', 'Photorealism', 'Neo-Dada', 'Art Brut', 'Color Field Painting', 'Tachisme', 'Lyrical Abstraction', 'Arte Povera', 'Neo-Expressionism', 'Transavanguardia', 'Post-Impressionism', 'De Stijl', 'Bauhaus', 'Constructivism','nautical', 'vintage', 'retro', 'antique', 'modern', 'futuristic', 'cyber', 'steampunk', 'gothic', 'romantic', 'baroque', 'rococo', 'renaissance', 'medieval') | ForEach-Object {$_ + ' style'} | Sort-Object -Unique))
+$styleDropdown.Items.AddRange((@('oil paint', 'acrylic paint', 'watercolor paint', 'gouache paint', 'tempera paint', 'encaustic', 'ink', 'charcoal', 'graphite', 'pastel', 'colored pencil', 'silverpoint', 'clay', 'metal', 'wood', 'stone', 'marble', 'bronze', 'glass', 'digital art', 'collage', 'textiles', 'plastics', 'ceramics', 'porcelain', 'mosaic', 'paper', 'canvas', 'leather', 'fiber', 'sand', 'found objects', 'light', 'sound', 'video', 'performance elements', 'ephemeral materials', 'environmental materials', 'biological materials', 'abstract art', 'abstract expressionism', 'academic art', 'art deco', 'art nouveau', 'avant-garde', 'baroque', 'bauhaus', 'classicism', 'cobra', 'color field painting', 'conceptual art', 'constructivism', 'contemporary art', 'cubism', 'dadaism', 'digital art', 'expressionism', 'fauvism', 'figurative art', 'fine art', 'futurism', 'gothic art', 'harlem renaissance', 'impressionism', 'installation art', 'land art', 'minimalism', 'modern art', 'naïve art', 'neo-impressionism', 'neoclassicism', 'neon art', 'op art', 'photorealism', 'pop art', 'post-impressionism', 'precisionism', 'realism', 'rococo', 'street art', 'suprematism', 'surrealism', 'symbolism', 'zero group', 'caravaggism', 'rembrandt lighting', 'picassian', 'renaissance', 'baroque', 'gothic','impressionism', 'expressionism', 'cubism', 'fauvism', 'futurism', 'dadaism', 'surrealism', 'abstract expressionism', 'minimalism', 'pop art', 'conceptual art', 'op art', 'photorealism', 'neo-dada', 'art brut', 'color field painting', 'tachisme', 'lyrical abstraction', 'arte povera', 'neo-expressionism', 'transavanguardia', 'post-impressionism', 'de stijl', 'bauhaus', 'constructivism','nautical', 'vintage', 'retro', 'antique', 'modern', 'futuristic', 'cyber', 'steampunk', 'gothic', 'romantic', 'baroque', 'rococo', 'renaissance', 'medieval') | ForEach-Object {$_ + ' style'} | Sort-Object -Unique))
 
 # Create dropdown for Media
 $mediaLabel = New-Object System.Windows.Forms.Label
@@ -92,7 +80,7 @@ $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(10, 160)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(10, 180)
-$mediaDropdown.Items.AddRange((@('Oil Paint', 'Acrylic Paint', 'Watercolor Paint', 'Gouache Paint', 'Tempera Paint', 'Encaustic', 'Ink', 'Charcoal', 'Graphite', 'Pastel', 'Colored Pencil', 'Silverpoint', 'Clay', 'Metal', 'Wood', 'Stone', 'Marble', 'Bronze', 'Glass', 'Digital Art', 'Collage', 'Textiles', 'Plastics', 'Ceramics', 'Porcelain', 'Mosaic', 'Paper', 'Canvas', 'Leather', 'Fiber', 'Sand', 'Found Objects', 'Light', 'Sound', 'Video', 'Performance Elements', 'Ephemeral Materials', 'Environmental Materials', 'Biological Materials','Alabaster', 'Bamboo', 'Beeswax', 'Bone', 'Brass', 'Cement', 'Chalk', 'Copper', 'Coral', 'Crayon', 'Dammar', 'Dye', 'Egg Tempera', 'Feathers', 'Felt', 'Fresco', 'Gesso', 'Gold Leaf', 'Granite', 'Graphite Powder', 'Gypsum', 'Ivory', 'Jade', 'Lacquer', 'Latex', 'Limestone', 'Linoleum', 'Lithography', 'Magnet', 'Mahogany', 'Mylar', 'Oak', 'Obsidian', 'Papyrus', 'Pastel Pencil', 'Pewter', 'Plaster', 'Plexiglass', 'Polymer Clay', 'Porphyry', 'Resin', 'Rubber', 'Silk', 'Slate', 'Soapstone', 'Steel', 'Terracotta', 'Vellum', 'Venetian Plaster', 'Wax') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
+$mediaDropdown.Items.AddRange((@('oil paint', 'acrylic paint', 'watercolor paint', 'gouache paint', 'tempera paint', 'encaustic', 'ink', 'charcoal', 'graphite', 'pastel', 'colored pencil', 'silverpoint', 'clay', 'metal', 'wood', 'stone', 'marble', 'bronze', 'glass', 'digital art', 'collage', 'textiles', 'plastics', 'ceramics', 'porcelain', 'mosaic', 'paper', 'canvas', 'leather', 'fiber', 'sand', 'found objects', 'light', 'sound', 'video', 'performance elements', 'ephemeral materials', 'environmental materials', 'biological materials','alabaster', 'bamboo', 'beeswax', 'bone', 'brass', 'cement', 'chalk', 'copper', 'coral', 'crayon', 'dammar', 'dye', 'egg tempera', 'feathers', 'felt', 'fresco', 'gesso', 'gold leaf', 'granite', 'graphite powder', 'gypsum', 'ivory', 'jade', 'lacquer', 'latex', 'limestone', 'linoleum', 'lithography', 'magnet', 'mahogany', 'mylar', 'oak', 'obsidian', 'papyrus', 'pastel pencil', 'pewter', 'plaster', 'plexiglass', 'polymer clay', 'porphyry', 'resin', 'rubber', 'silk', 'slate', 'soapstone', 'steel', 'terracotta', 'vellum', 'venetian plaster', 'wax') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
 
 # Create dropdown for Color
 $colorLabel = New-Object System.Windows.Forms.Label
@@ -110,7 +98,7 @@ $extraALabel.AutoSize = $true
 $extraALabel.Location = New-Object System.Drawing.Point(10, 260)
 $extraADropdown = New-Object System.Windows.Forms.ComboBox
 $extraADropdown.Location = New-Object System.Drawing.Point(10, 280)
-$extraADropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'HDR', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3D render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'ISO', 'focal length', 'focus') | Sort-Object -Unique))
+$extraADropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
 
 # Create dropdown for Extra B
 $extraBLabel = New-Object System.Windows.Forms.Label
@@ -119,7 +107,7 @@ $extraBLabel.AutoSize = $true
 $extraBLabel.Location = New-Object System.Drawing.Point(10, 310)
 $extraBDropdown = New-Object System.Windows.Forms.ComboBox
 $extraBDropdown.Location = New-Object System.Drawing.Point(10, 330)
-$extraBDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'HDR', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3D render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'ISO', 'focal length', 'focus') | Sort-Object -Unique))
+$extraBDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
 
 # Create dropdown for Extra C
 $extraCLabel = New-Object System.Windows.Forms.Label
@@ -128,7 +116,7 @@ $extraCLabel.AutoSize = $true
 $extraCLabel.Location = New-Object System.Drawing.Point(10, 360)
 $extraCDropdown = New-Object System.Windows.Forms.ComboBox
 $extraCDropdown.Location = New-Object System.Drawing.Point(10, 380)
-$extraCDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'HDR', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3D render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'ISO', 'focal length', 'focus') | Sort-Object -Unique))
+$extraCDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
 
 # Enable auto-complete mode for dropdowns
 $subjectDropdown.AutoCompleteMode = 'SuggestAppend'
@@ -240,7 +228,6 @@ $webButton.Text = 'Open Current Prompt in Designer'
 $webButton.Location = New-Object System.Drawing.Point(230, 220)
 $webButton.Size = New-Object System.Drawing.Size(150, 180)
 $webButton.Add_Click({
-
     # Get the current clipboard text
     $clipboardText = Get-Clipboard
 
@@ -251,15 +238,30 @@ $webButton.Add_Click({
         return
     }
 
+    # Define the base URL for the website
+    $baseURL = "https://designer.microsoft.com/image-creator?p="
+    # Create a function to format the text for the URL
+    function Format-ForURL ($text) {
+        try {
+            $text = "Create an image of " + $text.Replace(' ', '+')
+            return $text
+        } catch {
+            [System.Windows.Forms.MessageBox]::Show("An error occurred while formatting the text: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        }
+    }
+
     # Open the website with the clipboard text
     $formattedText = Format-ForURL -text $copiedTextbox.Text
-    $url = $baseURL + $formattedText
-    Start-Process $url
+    if ($formattedText) {
+        $url = $baseURL + $formattedText
+        Start-Process $url
+    } else {
+        [System.Windows.Forms.MessageBox]::Show("Clipboard is empty. Please select at least one item.", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    }
 
     # Log the clipboard text to a file
     $logFile = "prompt.log"
-    Add-Content -Path $logFile -Value $clipboardText
-
+    Add-Content -Path $logFile -Value $formattedText
 })
 
 # Add the selected items from the Dropdowns to the selectedWords array

@@ -147,7 +147,7 @@ $extraCDropdown.DropDownStyle = 'DropDown'
 # Create button to copy to clipboard
 $button = New-Object System.Windows.Forms.Button
 $button.Size = New-Object System.Drawing.Size(75, 370)
-$button.Text = 'Copy Dropdown Contents to Current Prompt'
+$button.Text = 'Copy Selections to the Clipboard to form a Prompt'
 $button.Location = New-Object System.Drawing.Point(140, 30)
 
 $button.Add_Click({
@@ -190,7 +190,7 @@ $randomButton.Add_Click({
         $selectedWords += $extraADropdown.Items | Get-Random
         $selectedWords += $extraBDropdown.Items | Get-Random
         $selectedWords += $extraCDropdown.Items | Get-Random
-        $clipboardText = [string]::Join(', ', $selectedWords)
+        $clipboardText = "Create an image of " + [string]::Join(', ', $selectedWords)
         if ($clipboardText) {
             $clipboardText = $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
             try {
@@ -224,7 +224,7 @@ if ($selectedWords -ne $null) {
 
 # Add a button to open the website with the generated text
 $webButton = New-Object System.Windows.Forms.Button
-$webButton.Text = 'Open Current Prompt in Designer'
+$webButton.Text = 'Open Current Prompt in Designer (or paste into Copilot)'
 $webButton.Location = New-Object System.Drawing.Point(230, 220)
 $webButton.Size = New-Object System.Drawing.Size(150, 180)
 $webButton.Add_Click({
@@ -243,7 +243,7 @@ $webButton.Add_Click({
     # Create a function to format the text for the URL
     function Format-ForURL ($text) {
         try {
-            $text = "Create an image of " + $text.Replace(' ', '+')
+            $text = $text.Replace(' ', '+')
             return $text
         } catch {
             [System.Windows.Forms.MessageBox]::Show("An error occurred while formatting the text: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)

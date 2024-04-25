@@ -11,5 +11,12 @@ Next up - freezing dropdowns so you can get random results while keeping the one
 ![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/8b813075-67c7-439d-9e37-987e41e9124b)
 ![Prompt-O-Matic5](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/1ade2d1f-32ed-473a-b3a7-44ce38476d7e)
 
+More examples.
+![Airplane and Bamboo2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/29e6112f-ad63-407c-8992-1b589679e7d6)
+![Pebbles](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4a1a8f26-6f63-4342-8af6-88970b407924)
+![Airplane Taking Off](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/32c5d766-3ef7-4ab9-952c-a134d94a090e)
+![Cave2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/01800ee0-62f9-4c9c-9246-bb94af5cb6b9)
+![NY Bay](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/a67458fc-9b8c-447c-a88a-d2b48495506f)
+
 Feedback welcome!
 - John

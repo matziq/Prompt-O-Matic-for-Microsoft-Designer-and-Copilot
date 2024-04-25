@@ -1,6 +1,6 @@
 <#
 Author: John Rea
-Date: April 23, 2024
+Date: April 25, 2024
 Version: 1.3
 #>
 
@@ -26,7 +26,9 @@ $copiedLabel.Location = New-Object System.Drawing.Point(10, 410)
 $copiedTextbox = New-Object System.Windows.Forms.TextBox
 $copiedTextbox.Location = New-Object System.Drawing.Point(10, 430)
 $copiedTextbox.ReadOnly = $true
-$copiedTextbox.Size = New-Object System.Drawing.Size(550, 100)
+$copiedTextbox.Size = New-Object System.Drawing.Size(550, 50)
+$copiedTextbox.Multiline = $true
+$copiedTextbox.ScrollBars = 'Vertical'
 
 # Create filter textboxes for each dropdown
 $subjectFilterTextbox = New-Object System.Windows.Forms.TextBox
@@ -53,7 +55,7 @@ $subjectLabel.AutoSize = $true
 $subjectLabel.Location = New-Object System.Drawing.Point(10, 10)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(10, 30)
-$subjectdropdown.items.addrange((@('tesla', 'living room', 'den', 'kitchen', 'bedroom', 'study', 'garage', 'backyard', 'patio', 'cat', 'mountain', 'computer', 'ocean', 'painting', 'city', 'flower', 'book', 'river', 'bicycle', 'forest', 'museum', 'piano', 'island', 'balloon', 'guitar', 'castle', 'train', 'statue', 'garden', 'camera', 'bridge', 'tree', 'beach', 'telescope', 'skyscraper', 'airplane', 'star', 'pyramid', 'lamp', 'volcano', 'cloud', 'temple', 'truck', 'moon', 'waterfall', 'fountain', 'kite', 'sunset', 'helicopter', 'galaxy', 'cliff', 'lighthouse', 'rose', 'dolphin', 'elephant', 'lion', 'tiger', 'penguin', 'whale', 'shark', 'butterfly', 'zebra', 'horse', 'monkey', 'giraffe', 'bear', 'wolf', 'snake', 'eagle', 'parrot', 'owl', 'frog', 'turtle', 'rabbit', 'kangaroo', 'panda', 'alligator', 'crocodile', 'peacock', 'squirrel', 'koala', 'rhinoceros', 'hippopotamus', 'octopus', 'jellyfish', 'coral', 'seashell', 'sand', 'pebble', 'cave', 'iceberg', 'glacier', 'desert', 'canyon', 'plateau', 'valley', 'hill', 'meadow', 'pond', 'stream', 'harbor', 'bay', 'cape', 'peninsula', 'archipelago') | sort-object -Unique))
+$subjectdropdown.items.addrange((@('airplane', 'alligator', 'archipelago', 'backyard', 'balloon', 'bay', 'beach', 'bear', 'bedroom', 'bicycle', 'book', 'bridge', 'butterfly', 'camera', 'cape', 'castle', 'cat', 'cave', 'city', 'cliff', 'cloud', 'computer', 'coral', 'crocodile', 'den', 'desert', 'dolphin', 'eagle', 'elephant', 'flower', 'forest', 'fountain', 'frog', 'galaxy', 'garden', 'garage', 'giraffe', 'glacier', 'guitar', 'harbor', 'helicopter', 'hill', 'hippopotamus', 'horse', 'iceberg', 'island', 'jellyfish', 'kangaroo', 'kitchen', 'kite', 'koala', 'lamp', 'lighthouse', 'lion', 'living room', 'meadow', 'monkey', 'moon', 'mountain', 'museum', 'ocean', 'octopus', 'owl', 'panda', 'parrot', 'patio', 'peacock', 'pebble', 'penguin', 'peninsula', 'piano', 'pond', 'pyramid', 'rabbit', 'river', 'rose', 'sand', 'seashell', 'shark', 'skyscraper', 'snake', 'squirrel', 'star', 'statue', 'study', 'sunset', 'telescope', 'temple', 'tesla', 'tiger', 'train', 'tree', 'truck', 'turtle', 'valley', 'volcano', 'waterfall', 'whale', 'wolf', 'zebra') | ForEach-Object {'a ' + $_} | sort-object -Unique))
 
 # Create dropdown for Action
 $actionLabel = New-Object System.Windows.Forms.Label
@@ -62,7 +64,7 @@ $actionLabel.AutoSize = $true
 $actionLabel.Location = New-Object System.Drawing.Point(10, 60)
 $actionDropdown = New-Object System.Windows.Forms.ComboBox
 $actionDropdown.Location = New-Object System.Drawing.Point(10, 80)
-$actionDropdown.Items.AddRange((@('run', 'jump', 'swim', 'fly', 'read', 'write', 'sing', 'dance', 'climb', 'cook', 'paint', 'draw', 'travel', 'explore', 'discover', 'invent', 'create', 'build', 'design', 'calculate', 'analyze', 'measure', 'record', 'play', 'compete', 'win', 'lose', 'practice', 'perform', 'act', 'direct', 'produce', 'film', 'edit', 'broadcast', 'stream', 'launch', 'orbit', 'land', 'dock', 'charge', 'power', 'program', 'code', 'hack', 'encrypt', 'decrypt', 'navigate', 'steer', 'drive', 'sail', 'cycle', 'race', 'ski', 'skate', 'surf', 'dive', 'fish', 'hunt', 'track', 'trap', 'capture', 'rescue', 'save', 'heal', 'cure', 'treat', 'medicate', 'operate', 'investigate', 'solve', 'resolve', 'mediate', 'negotiate', 'argue', 'debate', 'discuss', 'converse', 'communicate', 'translate', 'interpret', 'express', 'describe', 'define', 'explain', 'inform', 'teach', 'learn', 'study', 'research', 'examine', 'inspect', 'observe', 'view', 'watch', 'see', 'hear', 'listen', 'taste', 'touch', 'feel', 'smell', 'sense', 'experience', 'enjoy', 'appreciate', 'cherish', 'love', 'admire', 'respect', 'honor', 'celebrate', 'commemorate', 'remember', 'forget', 'recall', 'imagine', 'dream', 'wish', 'hope', 'aspire', 'plan', 'prepare', 'organize', 'arrange', 'coordinate', 'manage', 'lead', 'guide', 'direct', 'control', 'command', 'govern', 'rule', 'decide', 'choose', 'select', 'pick', 'vote', 'elect', 'appoint', 'hire', 'employ', 'work', 'operate', 'function', 'perform', 'serve', 'assist', 'help', 'support', 'aid', 'care', 'nurture', 'foster', 'cultivate', 'grow', 'plant', 'harvest', 'mine', 'extract', 'refine', 'process', 'produce', 'manufacture', 'assemble', 'construct', 'build', 'engineer', 'develop', 'innovate', 'pioneer', 'trailblaze', 'lead', 'pave', 'forge', 'shape', 'mold', 'sculpt', 'carve', 'cut', 'etch', 'engrave', 'print', 'publish', 'release', 'distribute', 'market', 'sell', 'trade', 'barter', 'negotiate', 'bargain', 'deal', 'contract', 'lease', 'rent', 'loan', 'borrow', 'lend', 'invest', 'fund', 'finance', 'sponsor', 'endorse', 'promote', 'advertise', 'campaign', 'lobby', 'advocate', 'support', 'back', 'uphold', 'defend', 'protect', 'secure', 'safeguard', 'shield', 'guard', 'watch', 'monitor', 'supervise', 'oversee', 'inspect', 'audit', 'check', 'verify', 'confirm', 'validate', 'authenticate', 'certify', 'approve', 'authorize', 'permit', 'allow', 'enable', 'empower', 'equip', 'supply', 'provide', 'deliver', 'furnish', 'offer', 'present', 'gift', 'reward', 'compensate', 'pay', 'reimburse', 'refund', 'settle', 'resolve', 'clear', 'close', 'complete', 'finish', 'end', 'terminate', 'conclude', 'wrap', 'seal', 'sign', 'stamp', 'mark', 'label', 'tag', 'identify', 'name', 'call', 'title', 'caption', 'headline', 'feature', 'spotlight', 'highlight', 'emphasize', 'accentuate', 'stress', 'underline', 'underscore', 'bolster', 'strengthen', 'fortify', 'reinforce', 'support', 'back', 'uphold', 'maintain', 'preserve', 'keep', 'hold', 'retain', 'sustain', 'prolong', 'extend', 'continue', 'persist', 'persevere', 'endure', 'survive', 'live', 'exist', 'be', 'become', 'turn', 'transform', 'change', 'alter', 'modify', 'adjust', 'adapt', 'evolve', 'progress', 'advance', 'move', 'shift', 'transfer', 'transport', 'convey', 'carry', 'bring', 'take', 'fetch', 'deliver', 'send', 'dispatch', 'mail', 'post', 'ship', 'freight', 'haul', 'tow', 'drag', 'pull', 'push', 'lift', 'raise', 'elevate', 'hoist', 'suspend', 'hang', 'dangle', 'swing', 'rock', 'shake', 'jolt', 'jostle', 'bump', 'hit', 'strike', 'smack', 'slap', 'punch', 'kick', 'jab', 'stab', 'slash', 'slice', 'cut', 'chop', 'hack', 'saw', 'carve', 'whittle', 'shave', 'trim', 'clip', 'snip', 'cut', 'sever', 'split', 'divide', 'separate', 'part', 'detach', 'disconnect', 'disengage', 'release', 'free', 'liberate', 'emancipate', 'rescue', 'save', 'redeem', 'recover', 'retrieve', 'regain', 'reclaim', 'recapture', 'repossess', 'reacquire', 'reoccupy', 'reenter', 'return', 'revert', 'retrace', 'rewind', 'reverse', 'invert', 'flip', 'rotate', 'spin', 'twist', 'turn', 'pivot', 'swivel', 'tilt', 'lean', 'slant', 'angle', 'slope', 'incline', 'decline', 'descend', 'fall', 'drop', 'plunge', 'dive', 'sink', 'submerge', 'immerse', 'drown', 'flood', 'overflow', 'spill', 'leak', 'drip', 'trickle', 'stream', 'flow', 'pour', 'gush', 'erupt', 'explode', 'burst', 'blow', 'ignite', 'burn', 'flame', 'blaze', 'glow', 'shine', 'sparkle', 'twinkle', 'flicker', 'flash', 'beam', 'radiate', 'emit', 'discharge', 'release', 'exude', 'ooze', 'seep', 'weep', 'cry', 'sob', 'wail', 'moan', 'groan', 'sigh', 'whisper', 'murmur', 'mutter', 'grumble', 'complain', 'protest', 'object', 'oppose', 'resist', 'defy', 'challenge', 'confront', 'face', 'encounter', 'meet', 'greet', 'welcome', 'host', 'entertain', 'amuse', 'delight', 'please', 'satisfy', 'content', 'fulfill', 'accomplish', 'achieve', 'attain', 'reach', 'grasp', 'clutch', 'grip', 'hold', 'embrace', 'hug', 'kiss', 'caress', 'stroke', 'pat', 'rub', 'massage', 'knead', 'press', 'squeeze', 'crush', 'grind', 'pulverize', 'mash', 'smash', 'demolish', 'destroy', 'ruin', 'wreck', 'shatter', 'crack', 'fracture', 'break', 'snap', 'tear', 'rip', 'rend', 'shred', 'mangle', 'distort', 'warp', 'twist', 'bend', 'bow', 'arch', 'curve', 'coil', 'curl', 'loop', 'knot', 'tie', 'bind', 'fasten', 'secure', 'attach', 'affix', 'stick', 'glue', 'paste', 'tack', 'pin', 'nail', 'screw', 'bolt', 'rivet', 'weld', 'solder', 'fuse', 'join', 'unite', 'merge', 'combine', 'blend', 'mix', 'stir', 'whisk', 'beat', 'whip', 'froth', 'foam', 'bubble', 'fizz', 'effervesce', 'sparkle', 'pop', 'crackle', 'snap', 'hiss','sizzle', 'sear', 'scorch', 'char', 'blacken', 'toast', 'roast', 'grill', 'broil', 'bake', 'fry', 'saute') | Sort-Object -Unique))
+$actionDropdown.Items.AddRange((@('acting', 'admiring', 'advertising', 'aiding', 'allowing', 'analyzing', 'appreciating', 'appointing', 'arguing', 'arranging', 'aspiring', 'assembling', 'assisting', 'auditing', 'authorizing', 'backing', 'bargaining', 'bartering', 'becoming', 'building', 'calculating', 'campaigning', 'capturing', 'caring', 'carving', 'celebrating', 'certifying', 'changing', 'charging', 'cherishing', 'choosing', 'climbing', 'coding', 'commanding', 'communicating', 'compensating', 'competing', 'completing', 'concluding', 'confirming', 'connecting', 'considering', 'constructing', 'contemplating', 'controlling', 'cooking', 'coordinating', 'creating', 'curing', 'cutting', 'cycling', 'dancing', 'debating', 'deciding', 'defending', 'defining', 'delivering', 'designing', 'detecting', 'developing', 'directing', 'discussing', 'discovering', 'distributing', 'diving', 'dock', 'drawing', 'dreaming', 'driving', 'editing', 'educating', 'electing', 'emancipating', 'employing', 'empowering', 'enabling', 'endorsing', 'enjoying', 'equipping', 'etching', 'examining', 'existing', 'explaining', 'exploring', 'expressing', 'extracting', 'feeling', 'filming', 'financing', 'fishing', 'flying', 'forging', 'forgetting', 'functioning', 'funding', 'governing', 'greeting', 'growing', 'guarding', 'guiding', 'hacking', 'harvesting', 'healing', 'hearing', 'helping', 'highlighting', 'hiring', 'holding', 'honoring', 'hoping', 'hunting', 'identifying', 'imagining', 'informing', 'innovating', 'inspecting', 'interpreting', 'investigating', 'jumping', 'keeping', 'labeling', 'landing', 'leading', 'leasing', 'learning', 'listening', 'living', 'loaning', 'lobbying', 'loving', 'maintaining', 'managing', 'manufacturing', 'marketing', 'measuring', 'mediating', 'medicating', 'mining', 'monitoring', 'molding', 'naming', 'navigating', 'negotiating', 'observing', 'offering', 'operating', 'orbiting', 'organizing', 'painting', 'performing', 'permitting', 'picking', 'planning', 'planting', 'playing', 'practicing', 'preparing', 'printing', 'processing', 'producing', 'programming', 'promoting', 'protecting', 'providing', 'publishing', 'racing', 'raising', 'reading', 'recalling', 'recording', 'recovering', 'refining', 'remembering', 'renting', 'rescuing', 'researching', 'resolving', 'respecting', 'rewarding', 'ruling', 'running', 'sailing', 'saving', 'sculpting', 'securing', 'seeing', 'selecting', 'selling', 'sensing', 'serving', 'shaping', 'shielding', 'shipping', 'singing', 'skating', 'skiing', 'smelling', 'solving', 'sponsoring', 'steering', 'studying', 'supporting', 'surfing', 'swimming', 'teaching', 'tracking', 'trading', 'trapping', 'traveling', 'treating', 'underlining', 'upholding', 'validating', 'viewing', 'voting', 'watching', 'winning', 'wishing', 'working', 'writing') | Sort-Object -Unique))
 
 # Create dropdown for Style
 $styleLabel = New-Object System.Windows.Forms.Label
@@ -71,7 +73,7 @@ $styleLabel.AutoSize = $true
 $styleLabel.Location = New-Object System.Drawing.Point(10, 110)
 $styleDropdown = New-Object System.Windows.Forms.ComboBox
 $styleDropdown.Location = New-Object System.Drawing.Point(10, 130)
-$styleDropdown.Items.AddRange((@('oil paint', 'acrylic paint', 'watercolor paint', 'gouache paint', 'tempera paint', 'encaustic', 'ink', 'charcoal', 'graphite', 'pastel', 'colored pencil', 'silverpoint', 'clay', 'metal', 'wood', 'stone', 'marble', 'bronze', 'glass', 'digital art', 'collage', 'textiles', 'plastics', 'ceramics', 'porcelain', 'mosaic', 'paper', 'canvas', 'leather', 'fiber', 'sand', 'found objects', 'light', 'sound', 'video', 'performance elements', 'ephemeral materials', 'environmental materials', 'biological materials', 'abstract art', 'abstract expressionism', 'academic art', 'art deco', 'art nouveau', 'avant-garde', 'baroque', 'bauhaus', 'classicism', 'cobra', 'color field painting', 'conceptual art', 'constructivism', 'contemporary art', 'cubism', 'dadaism', 'digital art', 'expressionism', 'fauvism', 'figurative art', 'fine art', 'futurism', 'gothic art', 'harlem renaissance', 'impressionism', 'installation art', 'land art', 'minimalism', 'modern art', 'naive art', 'neo-impressionism', 'neoclassicism', 'neon art', 'op art', 'photorealism', 'pop art', 'post-impressionism', 'precisionism', 'realism', 'rococo', 'street art', 'suprematism', 'surrealism', 'symbolism', 'zero group', 'caravaggism', 'rembrandt lighting', 'picassian', 'renaissance', 'baroque', 'gothic','impressionism', 'expressionism', 'cubism', 'fauvism', 'futurism', 'dadaism', 'surrealism', 'abstract expressionism', 'minimalism', 'pop art', 'conceptual art', 'op art', 'photorealism', 'neo-dada', 'art brut', 'color field painting', 'tachisme', 'lyrical abstraction', 'arte povera', 'neo-expressionism', 'transavanguardia', 'post-impressionism', 'de stijl', 'bauhaus', 'constructivism','nautical', 'vintage', 'retro', 'antique', 'modern', 'futuristic', 'cyber', 'steampunk', 'gothic', 'romantic', 'baroque', 'rococo', 'renaissance', 'medieval') | ForEach-Object {$_ + ' style'} | Sort-Object -Unique))
+$styleDropdown.Items.AddRange((@('abstract art', 'academic art', 'acrylic paint', 'antique', 'arte povera', 'art brut', 'art deco', 'art nouveau', 'avant-garde', 'bauhaus', 'biological materials', 'bronze', 'canvas', 'caravaggism', 'ceramics', 'charcoal', 'classicism', 'clay', 'cobr', 'collage', 'color field painting', 'colored pencil', 'conceptual art', 'constructivism', 'contemporary art', 'cubism', 'cyber', 'dadaism', 'de stijl', 'digital art', 'encaustic', 'environmental materials', 'ephemeral materials', 'expressionism', 'fauvism', 'fiber', 'figurative art', 'fine art', 'found objects', 'futurism', 'futuristic', 'glass', 'gothic', 'graphite', 'gouache paint', 'harlem renaissance', 'ink', 'installation art', 'land art', 'leather', 'light', 'lyrical abstraction', 'marble', 'medieval', 'metal', 'minimalism', 'modern', 'modern art', 'mosaic', 'naive art', 'nautical', 'neo-dada', 'neo-expressionism', 'neo-impressionism', 'neoclassicism', 'neon art', 'oil paint', 'op art', 'paper', 'pastel', 'performance elements', 'photorealism', 'picassian', 'plastics', 'pop art', 'porcelain', 'post-impressionism', 'precisionism', 'realism', 'renaissance', 'rembrandt lighting', 'retro', 'rococo', 'romantic', 'sand', 'silverpoint', 'sound', 'steampunk', 'stone', 'street art', 'suprematism', 'surrealism', 'symbolism', 'tachisme', 'tempera paint', 'textiles', 'transavanguardia', 'video', 'vintage', 'watercolor paint', 'wood', 'zero group') | ForEach-Object {'in the ' + $_ + ' style'} | Sort-Object -Unique))
 
 # Create dropdown for Media
 $mediaLabel = New-Object System.Windows.Forms.Label
@@ -80,7 +82,7 @@ $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(10, 160)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(10, 180)
-$mediaDropdown.Items.AddRange((@('oil paint', 'acrylic paint', 'watercolor paint', 'gouache paint', 'tempera paint', 'encaustic', 'ink', 'charcoal', 'graphite', 'pastel', 'colored pencil', 'silverpoint', 'clay', 'metal', 'wood', 'stone', 'marble', 'bronze', 'glass', 'digital art', 'collage', 'textiles', 'plastics', 'ceramics', 'porcelain', 'mosaic', 'paper', 'canvas', 'leather', 'fiber', 'sand', 'found objects', 'light', 'sound', 'video', 'performance elements', 'ephemeral materials', 'environmental materials', 'biological materials','alabaster', 'bamboo', 'beeswax', 'bone', 'brass', 'cement', 'chalk', 'copper', 'coral', 'crayon', 'dammar', 'dye', 'egg tempera', 'feathers', 'felt', 'fresco', 'gesso', 'gold leaf', 'granite', 'graphite powder', 'gypsum', 'ivory', 'jade', 'lacquer', 'latex', 'limestone', 'linoleum', 'lithography', 'magnet', 'mahogany', 'mylar', 'oak', 'obsidian', 'papyrus', 'pastel pencil', 'pewter', 'plaster', 'plexiglass', 'polymer clay', 'porphyry', 'resin', 'rubber', 'silk', 'slate', 'soapstone', 'steel', 'terracotta', 'vellum', 'venetian plaster', 'wax') | ForEach-Object {$_ + ' as media'} | Sort-Object -Unique))
+$mediaDropdown.Items.AddRange((@('acrylic paint', 'alabaster', 'bamboo', 'beeswax', 'biologicals', 'bone', 'brass', 'bronze', 'car parts', 'cement', 'ceramic', 'chalk', 'charcoal', 'clay', 'colored pencils', 'copper', 'coral', 'crayon', 'dammar', 'diamonds', 'digital art', 'dirt', 'dye', 'egg tempera', 'encaustic', 'environmental materials', 'ephemeral materials', 'feathers', 'felt', 'fiber', 'found objects', 'fresco', 'garbage', 'gesso', 'glass', 'gold', 'gold leaf', 'gouache paint', 'granite', 'graphite', 'graphite powder', 'gypsum', 'ink', 'ivory', 'jade', 'lacquer', 'latex', 'leather', 'light', 'limestone', 'linoleum', 'lithography', 'magnet', 'mahogany', 'marble', 'metal', 'mosaic', 'mylar', 'oak', 'obsidian', 'oil paint', 'papyrus', 'paper', 'pastel', 'pastel pencils', 'pewter', 'plaster', 'plastics', 'plexiglass', 'polymer clay', 'porcelain', 'porphyry', 'resin', 'rubber', 'sand', 'silk', 'silver', 'silverpoint', 'slate', 'soapstone', 'sound', 'steel', 'stone', 'tempera paint', 'textiles', 'terracotta', 'utensils', 'vellum', 'velvet', 'venetian plaster', 'video', 'wax', 'wood') | ForEach-Object {$_ + ' as artistic medium'} | Sort-Object -Unique))
 
 # Create dropdown for Color
 $colorLabel = New-Object System.Windows.Forms.Label
@@ -89,7 +91,7 @@ $colorLabel.AutoSize = $true
 $colorLabel.Location = New-Object System.Drawing.Point(10, 210)
 $colorDropdown = New-Object System.Windows.Forms.ComboBox
 $colorDropdown.Location = New-Object System.Drawing.Point(10, 230)
-$colorDropdown.Items.AddRange((@('autumn','winter','spring','summer','black and white','monochrome','sepia color','neon','primary','secondary','tertiary', 'complementary','analogous','triadic','split-complementary','tetradic','warm','cool','neutral','earth tones','jewel tones','dark','light', 'muted','saturated','desaturated','vibrant','dull','bright','light','dark', 'bright','muted','saturated','desaturated','vibrant','dull','pastel', 'rustic', 'metallic', 'psychedelic', 'oceanic', 'tropical', 'forest', 'urban', 'galactic', 'arctic', 'desert', 'sunset', 'sunrise', 'twilight', 'midnight', 'floral', 'citrus', 'berry', 'fire', 'ice', 'stormy', 'smoky', 'rainbow', 'candy', 'chocolate', 'coffee', 'wine', 'rose') | ForEach-Object {$_ + ' color palette'} | Sort-Object -Unique))
+$colorDropdown.Items.AddRange((@('analogous', 'arctic', 'autumn', 'berry', 'black and white', 'blue', 'bright', 'candy', 'chocolate', 'citrus', 'coffee', 'complementary', 'cool', 'dark', 'desaturated', 'desert', 'dull', 'earth tones', 'fire', 'floral', 'forest', 'galactic', 'green', 'ice', 'jewel tones', 'light', 'metallic', 'midnight', 'monochrome', 'muted', 'nature', 'neon', 'neutral', 'oceanic', 'pastel', 'primary', 'psychedelic', 'rainbow', 'red', 'rose', 'rose gold', 'rustic', 'saturated', 'secondary', 'sepia', 'smoky', 'split-complementary', 'spring', 'stormy', 'summer', 'sunrise', 'sunset', 'tertiary', 'tetradic', 'triadic', 'tropical', 'twilight', 'urban', 'vibrant', 'warm', 'wine', 'winter', 'yellow') | ForEach-Object {'with a ' + $_ + ' color palette'} | Sort-Object -Unique))
 
 # Create dropdown for Extra A
 $extraALabel = New-Object System.Windows.Forms.Label
@@ -98,7 +100,7 @@ $extraALabel.AutoSize = $true
 $extraALabel.Location = New-Object System.Drawing.Point(10, 260)
 $extraADropdown = New-Object System.Windows.Forms.ComboBox
 $extraADropdown.Location = New-Object System.Drawing.Point(10, 280)
-$extraADropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
+$extraADropdown.Items.AddRange((@('8k', 'bokeh', 'crisp', 'double exposure', 'dramatic', 'dreamy', 'ethereal', 'extreme close-up', 'extremely detailed', 'glossy finish', 'golden hour', 'grainy', 'hazy', 'high contrast', 'high dynamic range', 'high key', 'infrared', 'kodachrome', 'landscape', 'leading lines', 'lens flare', 'long exposure', 'low key', 'macro', 'matte finish', 'minimalist', 'moody', 'motion blur', 'panoramic view', 'portrait', 'reflections', 'rule of thirds', 'shallow depth of field', 'silhouette', 'smoke filled', 'smooth', 'soft focus', 'star trails', 'studio lighting', 'symmetry', 'textured', 'tilt-shifted', 'time-lapse', 'upside down', 'vignette', 'vintage', 'whimsical') | Sort-Object -Unique))
 
 # Create dropdown for Extra B
 $extraBLabel = New-Object System.Windows.Forms.Label
@@ -107,7 +109,7 @@ $extraBLabel.AutoSize = $true
 $extraBLabel.Location = New-Object System.Drawing.Point(10, 310)
 $extraBDropdown = New-Object System.Windows.Forms.ComboBox
 $extraBDropdown.Location = New-Object System.Drawing.Point(10, 330)
-$extraBDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
+$extraBDropdown.Items.AddRange((@('3d rendered', 'aerial view', 'ambient light', 'backlit', 'birds eye view', 'bokehlicious', 'chiaroscuro', 'cross processing', 'cyberpunk', 'deep depth of field', 'dystopian', 'fantasy', 'film grain', 'fish-eye lens', 'flat lay', 'hard shadows', 'isometric', 'lens flare', 'light painting', 'macro shot', 'magical realism', 'negative space', 'panoramic', 'perspective', 'post-apocalyptic', 'rim light', 'sci-fi', 'silhouette', 'soft shadows', 'split toning', 'steampunk', 'sunburst', 'telephoto', 'utopian', 'wide angle', 'worms eye view', 'zoomed in') | Sort-Object -Unique))
 
 # Create dropdown for Extra C
 $extraCLabel = New-Object System.Windows.Forms.Label
@@ -116,7 +118,7 @@ $extraCLabel.AutoSize = $true
 $extraCLabel.Location = New-Object System.Drawing.Point(10, 360)
 $extraCDropdown = New-Object System.Windows.Forms.ComboBox
 $extraCDropdown.Location = New-Object System.Drawing.Point(10, 380)
-$extraCDropdown.Items.AddRange((@('8k', 'kodachrome', 'golden hour', 'extreme close-up', 'extremely detailed', 'studio lighting', 'lens flare', 'bokeh', 'high contrast', 'low key', 'high key', 'silhouette', 'motion blur', 'long exposure', 'shallow depth of field', 'rule of thirds', 'leading lines', 'symmetry', 'minimalist', 'vintage', 'grainy', 'moody', 'dreamy', 'ethereal', 'dramatic', 'whimsical', 'upside down', 'reflections', 'double exposure', 'panorama', 'tilt-shift', 'infrared', 'macro', 'time-lapse', 'star trails', 'smoke', 'portrait', 'landscape','soft focus', 'vibrant colors', 'sepia tone', 'saturated', 'desaturated', 'hazy', 'glossy finish', 'matte finish', 'textured', 'smooth', 'crisp', 'dynamic range', 'hdr', 'vignette', 'selective color', 'monochrome', 'duotone', 'triadic colors', 'complementary colors', 'analogous colors', 'split toning', 'cross processing', 'film grain', 'light painting', 'negative space', 'perspective', 'aerial view', 'birds eye view', 'worms eye view', 'panoramic', 'fish-eye lens', 'wide angle', 'telephoto', 'zoomed in', 'macro shot', 'depth of field', 'bokehlicious', 'sunburst', 'flare', 'backlit', 'rim light', 'ambient light', 'soft shadows', 'hard shadows', 'silhouette', 'chiaroscuro', 'flat lay', 'isometric', '3d render', 'hyperrealism', 'surreal', 'fantasy', 'sci-fi', 'post-apocalyptic', 'utopian', 'dystopian', 'steampunk', 'cyberpunk', 'magical realism', 'abstract', 'geometric', 'organic', 'figurative', 'narrative', 'conceptual', 'symbolic', 'allegorical', 'mythological', 'historical', 'retro', 'futuristic', 'timeless', 'seasonal', 'nocturnal', 'diurnal', 'golden hour', 'blue hour', 'twilight', 'dawn', 'dusk', 'nightfall', 'starlight', 'moonlight', 'candlelight', 'neon', 'glow', 'radiance', 'luminance', 'illumination', 'brightness', 'contrast', 'saturation', 'hue', 'tone', 'color temperature', 'white balance', 'exposure', 'shutter speed', 'aperture', 'iso', 'focal length', 'focus') | Sort-Object -Unique))
+$extraCDropdown.Items.AddRange((@('abstract', 'allegorical', 'aperture', 'blue color temperature', 'blue hour', 'brightness', 'candlelight', 'conceptual', 'contrast', 'dawn', 'depressive tone', 'diurnal', 'dusk', 'figurative', 'futuristic', 'geometric', 'glow', 'golden hour', 'high aperture', 'high iso', 'high shutter speed', 'historical', 'illumination', 'long focal length', 'low exposure', 'luminance', 'medium saturation', 'medium white balance', 'moonlight', 'mythological', 'narrative', 'neon', 'nightfall', 'nocturnal', 'opposite hue', 'organic', 'out of focus', 'radiance', 'retro', 'seasonal', 'starlight', 'symbolic', 'timeless', 'twilight') | Sort-Object -Unique))
 
 # Enable auto-complete mode for dropdowns
 $subjectDropdown.AutoCompleteMode = 'SuggestAppend'
@@ -149,7 +151,40 @@ $button = New-Object System.Windows.Forms.Button
 $button.Size = New-Object System.Drawing.Size(75, 370)
 $button.Text = 'Copy Selections to the Clipboard to form a Prompt'
 $button.Location = New-Object System.Drawing.Point(140, 30)
+$button.Enabled = $false
 
+# Enable button only when all dropdowns have a selection
+$subjectDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$actionDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$styleDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$mediaDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$colorDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$extraADropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$extraBDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
+
+$extraCDropdown.add_SelectedIndexChanged({
+    $button.Enabled = $subjectDropdown.SelectedItem -and $actionDropdown.SelectedItem -and $styleDropdown.SelectedItem -and $mediaDropdown.SelectedItem -and $colorDropdown.SelectedItem -and $extraADropdown.SelectedItem -and $extraBDropdown.SelectedItem -and $extraCDropdown.SelectedItem
+})
 $button.Add_Click({
     $selectedWords = @()
     if ($subjectDropdown.SelectedItem) { $selectedWords += $subjectDropdown.SelectedItem }
@@ -166,7 +201,7 @@ $button.Add_Click({
     }
 
     $clipboardText = [string]::Join(', ', $selectedWords)
-    $clipboardText = "Create an image of " + $clipboardText.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
+    $clipboardText = "Create an image of " + $clipboardText #.Substring(0,1).ToUpper()+$clipboardText.Substring(1) + "."
     Set-Clipboard -Value $clipboardText
     if ($clipboardText) {
         $copiedTextbox.Text = $clipboardText
@@ -227,6 +262,10 @@ $webButton = New-Object System.Windows.Forms.Button
 $webButton.Text = 'Open Current Prompt in Designer (or paste into Copilot)'
 $webButton.Location = New-Object System.Drawing.Point(230, 220)
 $webButton.Size = New-Object System.Drawing.Size(150, 180)
+
+# Disable the button initially
+$webButton.Enabled = $copiedTextbox.Text -ne ""
+
 $webButton.Add_Click({
     # Get the current clipboard text
     $clipboardText = Get-Clipboard
@@ -260,8 +299,17 @@ $webButton.Add_Click({
     }
 
     # Log the clipboard text to a file
-    $logFile = "prompt.log"
-    Add-Content -Path $logFile -Value $formattedText
+    if ($formattedText) {
+        $logFile = "prompt.log"
+        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        $logEntry = "$timestamp - $clipboardText"
+        Add-Content -Path $logFile -Value $logEntry
+    }
+})
+
+# Add an event handler to enable/disable the button based on the clipboard text
+$copiedTextbox.add_TextChanged({
+    $webButton.Enabled = $copiedTextbox.Text -ne ""
 })
 
 # Add the selected items from the Dropdowns to the selectedWords array
@@ -317,6 +365,9 @@ $clearButton.Location = New-Object System.Drawing.Point(400, 220)
 $clearButton.Size = New-Object System.Drawing.Size(150, 180)
 $clearButton.Text = "Clear Clipboard"
 
+# Disable the button initially
+$clearButton.Enabled = [System.Windows.Forms.Clipboard]::ContainsText()
+
 # Add click event to the clear button
 $clearButton.Add_Click({
     $confirmation = [System.Windows.Forms.MessageBox]::Show("Are you sure you want to clear the clipboard?", "Confirmation", [System.Windows.Forms.MessageBoxButtons]::YesNo, [System.Windows.Forms.MessageBoxIcon]::Question)
@@ -325,11 +376,50 @@ $clearButton.Add_Click({
             if ([System.Windows.Forms.Clipboard]::ContainsText()) {
                 [System.Windows.Forms.Clipboard]::Clear()
                 $copiedTextbox.Text = ""
+                $clearButton.Enabled = $false
             }
         } catch {
             [System.Windows.Forms.MessageBox]::Show("An error occurred while clearing the clipboard: $_", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         }
     }
+})
+
+# Add event handler to enable/disable the clear button based on clipboard content
+$copiedTextbox.add_TextChanged({
+    $clearButton.Enabled = [System.Windows.Forms.Clipboard]::ContainsText()
+})
+
+# Add event handler to enable/disable the reset button based on dropdown selection
+$subjectDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$actionDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$styleDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$mediaDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$colorDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$extraADropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$extraBDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
+})
+
+$extraCDropdown.add_SelectedIndexChanged({
+    $resetButton.Enabled = $subjectDropdown.SelectedItem -or $actionDropdown.SelectedItem -or $styleDropdown.SelectedItem -or $mediaDropdown.SelectedItem -or $colorDropdown.SelectedItem -or $extraADropdown.SelectedItem -or $extraBDropdown.SelectedItem -or $extraCDropdown.SelectedItem
 })
 
 # Add the reset dropdown boxes button to the form

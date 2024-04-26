@@ -17,6 +17,8 @@ More examples.
 ![Airplane Taking Off](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/32c5d766-3ef7-4ab9-952c-a134d94a090e)
 ![Cave2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/01800ee0-62f9-4c9c-9246-bb94af5cb6b9)
 ![NY Bay](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/a67458fc-9b8c-447c-a88a-d2b48495506f)
+![Bear Hunter](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/b1c534f8-2944-49de-a3dc-f913e3cad108)
+![Bamboo Horse](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/7701b71e-07c4-42ed-93c1-9e70bf5a1957)
 
 Feedback welcome!
 - John

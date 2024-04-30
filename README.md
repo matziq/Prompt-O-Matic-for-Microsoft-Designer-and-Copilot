@@ -10,6 +10,7 @@ Next up - freezing dropdowns so you can get random results while keeping the one
 ![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4e838241-619c-410f-95cb-863a5def98c3)
 ![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/c1feeeee-3ad2-4ccf-8275-77df7fe717c8)
 ![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6ad39fdb-64c2-4d83-bcce-629e1c98e6dc)
+![Prompt-O-Matic1](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/1089bd36-3e4a-4489-9e3c-453b32662e3a)
 ![Prompt-O-Matic4](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/9288d999-61ea-483e-b9cc-125ff5ebcfeb)
 ![Prompt-O-Matic5](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6c64d4ac-3711-43d2-8159-ea7dd9df81f9)
 ![Prompt-O-Matic6](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/9d70c01a-1242-4c5f-915a-b5117eb03963)

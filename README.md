@@ -1,24 +1,19 @@
 Prompt-o-Matic for Microsoft Designer
 
-A Simple GUI that lets you choose subject, action, artistic style, media, and extras to form a prompt to use with Microsoft Designer. 
-Designer utlizies DAL-E 3 on the backend but on the front end, Designer improves the prompt so that DAL-E provides better results.
-There is also a random button that lets you create a random selection from the various dropdowns.
-You can also edit the prompt before you generate the image once you copy the contents of the clipboard to Designer.
+A Simple GUI that lets you choose subject, action, artistic style, media, and extras to form a prompt to use with Designer or Copilot
+Designer and Copilot utlize DAL-E 3 on the backend but on the front end, they improve the prompt so that DAL-E 3 provides better results.
+I included a random button that lets you create a random selection from the various dropdowns.
+When you make any changes, the clipboard will be updated so you can just click one of the buttons to open Designer or Copilot, or just paste!
+
 Next up - freezing dropdowns so you can get random results while keeping the ones you like.
 
-![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/b251901f-49ef-45a6-8f3c-11c65c1ee5ea)
-![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6a56bd9a-9fb2-4f5d-8d96-9de1bb9d8da7)
-![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/8b813075-67c7-439d-9e37-987e41e9124b)
-![Prompt-O-Matic5](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/1ade2d1f-32ed-473a-b3a7-44ce38476d7e)
-
-More examples.
-![Airplane and Bamboo2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/29e6112f-ad63-407c-8992-1b589679e7d6)
-![Pebbles](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4a1a8f26-6f63-4342-8af6-88970b407924)
-![Airplane Taking Off](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/32c5d766-3ef7-4ab9-952c-a134d94a090e)
-![Cave2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/01800ee0-62f9-4c9c-9246-bb94af5cb6b9)
-![NY Bay](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/a67458fc-9b8c-447c-a88a-d2b48495506f)
-![Bear Hunter](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/b1c534f8-2944-49de-a3dc-f913e3cad108)
-![Bamboo Horse](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/7701b71e-07c4-42ed-93c1-9e70bf5a1957)
+![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/4e838241-619c-410f-95cb-863a5def98c3)
+![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/c1feeeee-3ad2-4ccf-8275-77df7fe717c8)
+![Prompt-O-Matic3](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6ad39fdb-64c2-4d83-bcce-629e1c98e6dc)
+![Prompt-O-Matic4](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/9288d999-61ea-483e-b9cc-125ff5ebcfeb)
+![Prompt-O-Matic5](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/6c64d4ac-3711-43d2-8159-ea7dd9df81f9)
+![Prompt-O-Matic6](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/9d70c01a-1242-4c5f-915a-b5117eb03963)
+![Prompt-O-Matic7](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer/assets/31866685/2793712a-aa8c-42c2-bfc1-679fde891f89)
 
 Feedback welcome!
 - John

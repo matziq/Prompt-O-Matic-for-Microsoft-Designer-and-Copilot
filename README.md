@@ -7,6 +7,7 @@ The script also includes a random button that lets you create a random prompt fr
 If you check the freeze box next to one of the dropdowns and click the "Random Prompt Generator" button, those dropdowns won't change.
 
 When you make any changes, the clipboard will be autopatically updated so you can just click one of the buttons to open Designer or Copilot, or just paste from the clipboard.
+
 ![Prompt-O-Matic](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer-and-Copilot/assets/31866685/751a4c7b-788e-4e19-b553-106deec63741)
 ![Prompt-O-Matic1](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer-and-Copilot/assets/31866685/8eefe1b2-4552-47eb-8b35-e7ec4eae0ca3)
 ![Prompt-O-Matic2](https://github.com/matziq/Prompt-O-Matic-for-Microsoft-Designer-and-Copilot/assets/31866685/5a4c5228-a1a5-4b15-a2b3-0f4842e05c20)

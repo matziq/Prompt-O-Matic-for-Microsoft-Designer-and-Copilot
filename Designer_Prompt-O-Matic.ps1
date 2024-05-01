@@ -7,6 +7,15 @@ Add-Type -AssemblyName System.Windows.Forms
 # Clears the clipboard on launch
 [System.Windows.Forms.Clipboard]::Clear()
 
+function Format-ForURL ($text) {
+    try {
+        $text = $text.Replace(' ', '+')
+        return $text
+    } catch {
+        [System.Windows.Forms.MessageBox]::Show('An error occurred while formatting the text: $_', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+    }
+}
+
 # Create form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'Prompt-O-Matic for Microsoft Designer'
@@ -289,38 +298,24 @@ $webMDButton.Text = 'Open Prompt in Microsoft Designer'
 $webMDButton.Location = New-Object System.Drawing.Point(150, 215)
 $webMDButton.Size = New-Object System.Drawing.Size(150, 90)
 
-# Disable the button initially
-$webMDButton.Enabled = $copiedTextbox.Text -ne ''
-
 $webMDButton.Add_Click({
-    # Get the current clipboard text
-    $clipboardText = Get-Clipboard
-
-    if ($clipboardText) {
-        $copiedTextbox.Text = $clipboardText
-    } else {
+    if ($copiedTextbox.Text -ne $null -and $copiedTextbox.Text -ne '') {
+        Get-Clipboard
+    }
+    else {
         [System.Windows.Forms.MessageBox]::Show('Clipboard is empty. Please select at least one item.', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         return
     }
 
-    # Define the base URL for the website
     $baseURL = 'https://designer.microsoft.com/image-creator?p='
-    # Create a function to format the text for the URL
-    function Format-ForURL ($text) {
-        try {
-            $text = $text.Replace(' ', '+')
-            return $text
-        } catch {
-            [System.Windows.Forms.MessageBox]::Show('An error occurred while formatting the text: $_', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
-        }
-    }
 
     # Open the website with the clipboard text
     $formattedText = Format-ForURL -text $copiedTextbox.Text
     if ($formattedText) {
         $url = $baseURL + $formattedText + '&form=NTPCH1&refig=dd8bc5ce95bf495a89a1b6c447914a00&pc=U531&adppc=EDGEDBB&sp=2&lq=0&qs=PN&sk=PN1&sc=8-0&cvid=dd8bc5ce95bf495a89a1b6c447914a00&showconv=1&sendquery=1'
         Start-Process $url
-    } else {
+    } 
+    else {
         [System.Windows.Forms.MessageBox]::Show('Clipboard is empty. Please select at least one item.', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
     }
 
@@ -333,42 +328,22 @@ $webMDButton.Add_Click({
     }
 })
 
-# Add an event handler to enable/disable the button based on the clipboard text
-$copiedTextbox.add_TextChanged({
-    $webMDButton.Enabled = $copiedTextbox.Text -ne ''
-})
-
 # Add a button to open the website with the generated text
 $webMCButton = New-Object System.Windows.Forms.Button
 $webMCButton.Text = 'Open Prompt in Microsoft Copilot'
 $webMCButton.Location = New-Object System.Drawing.Point(150, 310)
 $webMCButton.Size = New-Object System.Drawing.Size(150, 90)
 
-# Disable the button initially
-$webMCButton.Enabled = $copiedTextbox.Text -ne ''
-
 $webMCButton.Add_Click({
-    # Get the current clipboard text
-    $clipboardText = Get-Clipboard
-
-    if ($clipboardText) {
-        $copiedTextbox.Text = $clipboardText
-    } else {
+    if ($copiedTextbox.Text -ne $null -and $copiedTextbox.Text -ne '') {
+        $clipboardText = Get-Clipboard
+    } 
+    else {
         [System.Windows.Forms.MessageBox]::Show('Clipboard is empty. Please select at least one item.', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         return
     }
 
-    # Define the base URL for the website
     $baseURL = 'https://www.bing.com/search?q='
-    # Create a function to format the text for the URL
-    function Format-ForURL ($text) {
-        try {
-            $text = $text.Replace(' ', '+')
-            return $text
-        } catch {
-            [System.Windows.Forms.MessageBox]::Show('An error occurred while formatting the text: $_', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
-        }
-    }
 
     # Open the website with the clipboard text
     $formattedText = Format-ForURL -text $copiedTextbox.Text
@@ -378,19 +353,14 @@ $webMCButton.Add_Click({
     } else {
         [System.Windows.Forms.MessageBox]::Show('Clipboard is empty. Please select at least one item.', 'Error', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
     }
-
+    
     # Log the clipboard text to a file
     if ($formattedText) {
         $logFile = 'prompt.log'
         $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-        $logEntry = '$timestamp - $clipboardText'
+        $logEntry = "$timestamp - $clipboardText"
         Add-Content -Path $logFile -Value $logEntry
     }
-})
-
-# Add an event handler to enable/disable the button based on the clipboard text
-$copiedTextbox.add_TextChanged({
-    $webMCButton.Enabled = $copiedTextbox.Text -ne ''
 })
 
 # Create a button to reset the dropdown boxes

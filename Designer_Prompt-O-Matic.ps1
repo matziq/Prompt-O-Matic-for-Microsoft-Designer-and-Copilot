@@ -34,7 +34,7 @@ function Format-ForURL ($text) {
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'Prompt-O-Matic for Microsoft Designer'
 $form.StartPosition = 'CenterScreen'
-$form.Size = New-Object System.Drawing.Size(600, 600)
+$form.Size = New-Object System.Drawing.Size(600, 550)
 $form.FormBorderStyle = 'FixedDialog'
 $form.MaximizeBox = $true
 $form.MinimizeBox = $true

@@ -54,14 +54,14 @@ $subjectCheckboxLabel = New-Object System.Windows.Forms.Label
 $subjectCheckboxLabel.Location = New-Object System.Drawing.Point(130, 20)
 $subjectCheckboxLabel.AutoSize = $true
 $subjectCheckbox = New-Object System.Windows.Forms.CheckBox
-$subjectCheckbox.Location = New-Object System.Drawing.Point(160, 30)
-$subjectCheckbox.text = 'Freeze'
-$subjectCheckbox.AutoSize = $true
+$subjectCheckbox.Location = New-Object System.Drawing.Point(180, 30)
+$subjectCheckbox.text = 'Freeze',$subjectLabel.Text
+$subjectCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($subjectCheckbox)
 $subjectDropdown = New-Object System.Windows.Forms.ComboBox
 $subjectDropdown.Location = New-Object System.Drawing.Point(5, 30)
 $subjectDropdown.DropDownStyle = 'DropDown'
-$subjectDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$subjectDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $subjectdropdown.items.addrange((@('abstract', 'actor', 'airplane', 'alligator', 'archipelago', 'eagle', 'elephant', 'iceberg', 'island', 'ocean', 'octopus', 'owl', 'animal', 'backyard', 'balloon', 'banksys defy', 'bay', 'beach', 'bear', 'bedroom', 'bicycle', 'book', 'boy', 'bridge', 'building', 'butterfly', 'camera', 'cape', 'car', 'castle', 'cat', 'cave', 'child', 'city', 'cliff', 'cloud', 'computer', 'conflict', 'coral', 'crocodile', 'cultural symbol', 'dancer', 'da vincis gaze', 'dalis melt', 'dancer', 'den', 'desert', 'dessert', 'doctor', 'dolphin', 'dream', 'fantasy world', 'flower', 'forest', 'fountain', 'frog', 'galaxy', 'garden', 'garage', 'giraffe', 'girl', 'glacier', 'guitar', 'harbor', 'hero', 'historical event', 'hill', 'hippopotamus', 'hokusais wave', 'hoppers isolate', 'horse', 'jellyfish', 'kangaroo', 'kitchen', 'kite', 'klimts embrace', 'koala', 'lamp', 'landscape', 'lighthouse', 'lion', 'living room', 'love', 'man', 'matisses cut', 'meadow', 'michelangelos creation', 'monkey', 'monets bloom', 'moon', 'mountain', 'museum', 'musician', 'mythological creature', 'nightmare', 'okeeffes enlarge', 'panda', 'parrot', 'patio', 'peace', 'peacock', 'pebble', 'penguin', 'peninsula', 'piano', 'pirate', 'planet', 'pond', 'pollocks drip', 'portrait', 'pyramid', 'rabbit', 'rain', 'ranger', 'religious icon', 'rembrandts illuminate', 'river', 'sand', 'science fiction scene', 'snow', 'star', 'storm', 'street', 'tree', 'truck', 'turtle', 'valley', 'van goghs swirl', 'villain', 'volcano', 'warhols replicate', 'waterfall', 'whale', 'wolf', 'woman', 'zebra') | sort-object -unique))
 
 # Create dropdown for Action
@@ -69,18 +69,15 @@ $actionLabel = New-Object System.Windows.Forms.Label
 $actionLabel.Text = 'Action'
 $actionLabel.AutoSize = $true
 $actionLabel.Location = New-Object System.Drawing.Point(5, 60)
-$actionCheckboxLabel = New-Object System.Windows.Forms.Label
-$actionCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$actionCheckboxLabel.AutoSize = $true
 $actionCheckbox = New-Object System.Windows.Forms.CheckBox
-$actionCheckbox.Location = New-Object System.Drawing.Point(160, 80)
-$actionCheckbox.Text = 'Freeze'
-$actionCheckbox.AutoSize = $true
+$actionCheckbox.Location = New-Object System.Drawing.Point(180, 80)
+$actionCheckbox.Text = 'Freeze',$actionLabel.Text
+$actionCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($actionCheckbox)
 $actionDropdown = New-Object System.Windows.Forms.ComboBox
 $actionDropdown.Location = New-Object System.Drawing.Point(5, 80)
 $actionDropdown.DropDownStyle = 'DropDown'
-$actionDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$actionDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $actiondropdown.items.addrange((@('admiring','aiding','allowing','analyzing','appreciating','appointing','arguing','arranging','aspiring','assembling','assisting','auditing','authorizing','awakening','backing','bargaining','bartering','becoming','building','calculating','campaigning','capturing','caring','carving','celebrating','certifying','changing','charging','cherishing','choosing','climbing','coding','commanding','communicating','compensating','competing','completing','concluding','confirming','connecting','considering','constructing','contemplating','controlling','cooking','coordinating','creating','curing','cutting','cycling','dancing','debating','deciding','defending','defining','delivering','designing','detecting','developing','directing','discussing','discovering','distributing','diving','dock','drawing','dreaming','driving','editing','educating','electing','emancipating','employing','empowering','enabling','endorsing','energizing','enjoying','equipping','etching','examining','existing','explaining','exploring','expressing','extracting','feeling','filming','financing','fishing','flying','forging','forgetting','functioning','funding','governing','greeting','growing','guarding','guiding','hacking','harvesting','healing','hearing','helping','highlighting','hiring','holding','honoring','hoping','hunting','identifying','illuminating','imagining','impacting','informing','innovating','inspecting','interpreting','investigating','jumping','keeping','labeling','landing','leading','leasing','learning','listening','living','loaning','lobbying','loving','maintaining','managing','manufacturing','marketing','measuring','mediating','medicating','mining','monitoring','molding','naming','navigating','negotiating','observing','offering','operating','orbiting','organizing','painting','performing','permitting','picking','planning','planting','playing','practicing','preparing','printing','processing','producing','programming','promoting','protecting','providing','publishing','racing','raising','reading','recalling','recording','recovering','refining','remembering','renting','rescuing','researching','resolving','respecting','rewarding','revitalizing','ruling','running','sailing','saving','sculpting','securing','seeing','selecting','selling','sensing','serving','shaping','shielding','shipping','singing','skating','skiing','smelling','solving','sponsoring','steering','stirring','studying','supporting','surfing','swimming','teaching','tracking','trading','trapping','traveling','treating','underlining','upholding','validating','viewing','voting','watching','winning','wishing','working','writing') | sort-object -unique))
 
 # Create dropdown for Style
@@ -88,18 +85,15 @@ $styleLabel = New-Object System.Windows.Forms.Label
 $styleLabel.Text = 'Style'
 $styleLabel.AutoSize = $true
 $styleLabel.Location = New-Object System.Drawing.Point(5, 110)
-$styleCheckboxLabel = New-Object System.Windows.Forms.Label
-$styleCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$styleCheckboxLabel.AutoSize = $true
 $styleCheckbox = New-Object System.Windows.Forms.CheckBox
-$styleCheckbox.Location = New-Object System.Drawing.Point(160, 130)
-$styleCheckbox.Text = 'Freeze'
-$styleCheckbox.AutoSize = $true
+$styleCheckbox.Location = New-Object System.Drawing.Point(180, 130)
+$styleCheckbox.Text = 'Freeze',$styleLabel.Text
+$styleCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($styleCheckbox)
 $styleDropdown = New-Object System.Windows.Forms.ComboBox
 $styleDropdown.Location = New-Object System.Drawing.Point(5, 130)
 $styleDropdown.DropDownStyle = 'DropDown'
-$styleDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$styleDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $styledropdown.items.addrange((@('abstract art', 'abstract expressionism', 'academic art', 'acrylic paint', 'algorithmic art', 'antique', 'arte povera', 'art brut', 'art deco', 'art nouveau', 'augmented reality art', 'avant-garde', 'baroque', 'bauhaus', 'bio art', 'biological materials', 'bronze', 'canvas', 'caravaggism', 'ceramics', 'charcoal', 'classicism', 'clay', 'cobr', 'collage', 'color field painting', 'colored pencil', 'conceptual art', 'constructivism', 'contemporary art', 'cubism', 'cyber', 'cyber art', 'dadaism', 'de stijl', 'digital art', 'encaustic', 'environmental art', 'environmental materials', 'ephemeral materials', 'expressionism', 'fauvism', 'fiber', 'figurative art', 'fine art', 'found objects', 'futurism', 'futuristic', 'generative art', 'glass', 'gothic', 'graphite', 'graffiti', 'gouache paint', 'harlem renaissance', 'impressionism', 'ink', 'installation art', 'land art', 'leather', 'light', 'light art', 'lowbrow', 'lyrical abstraction', 'marble', 'medieval', 'metal', 'minimalism', 'modern', 'modern art', 'modernism', 'mosaic', 'naive art', 'nautical', 'neo-dada', 'neo-expressionism', 'neo-geo', 'neo-impressionism', 'neoclassicism', 'neon art', 'oil paint', 'op art', 'paper', 'pastel', 'performance art', 'performance elements', 'photorealism', 'picassian', 'plastics', 'pop art', 'porcelain', 'post-impressionism', 'post-internet', 'post-structuralism', 'postmodernism', 'precisionism', 'realism', 'renaissance', 'rembrandt lighting', 'relational aesthetics', 'retro', 'rococo', 'romantic', 'romanticism', 'sand', 'silverpoint', 'sound', 'sound art', 'steampunk', 'stone', 'street art', 'stuckism', 'superflat', 'suprematism', 'surrealism', 'symbolism', 'tachisme', 'tempera paint', 'textiles', 'toyism', 'transavantgarde', 'transavanguardia', 'video', 'video art', 'vintage', 'virtual reality art', 'watercolor paint', 'wood', 'young british artists', 'zero group') | foreach-object {'in the ' + $_ + ' style'} | sort-object -unique))
 
 # Create dropdown for Media
@@ -107,18 +101,15 @@ $mediaLabel = New-Object System.Windows.Forms.Label
 $mediaLabel.Text = 'Media'
 $mediaLabel.AutoSize = $true
 $mediaLabel.Location = New-Object System.Drawing.Point(5, 160)
-$mediaCheckboxLabel = New-Object System.Windows.Forms.Label
-$mediaCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$mediaCheckboxLabel.AutoSize = $true
 $mediaCheckbox = New-Object System.Windows.Forms.CheckBox
-$mediaCheckbox.Location = New-Object System.Drawing.Point(160, 180)
-$mediaCheckbox.Text = 'Freeze'
-$mediaCheckbox.AutoSize = $true
+$mediaCheckbox.Location = New-Object System.Drawing.Point(180, 180)
+$mediaCheckbox.Text = 'Freeze',$mediaLabel.Text
+$mediaCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($mediaCheckbox)
 $mediaDropdown = New-Object System.Windows.Forms.ComboBox
 $mediaDropdown.Location = New-Object System.Drawing.Point(5, 180)
 $mediaDropdown.DropDownStyle = 'DropDown'
-$mediaDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$mediaDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $mediadropdown.items.addrange((@('acrylic paint','alabaster','bamboo','beeswax','biologicals','bone','brass','bronze','car parts','cement','ceramic','chalk','charcoal','clay','colored pencils','copper','coral','crayon','dammar','diamonds','digital art','dirt','dye','egg tempera','encaustic','environmental materials','ephemeral materials','feathers','felt','fiber','film','found objects','fresco','garbage','gesso','glass','gold','gold leaf','gouache paint','granite','graphite','graphite powder','gypsum','ink','ivory','jade','lacquer','latex','leather','light','limestone','linoleum','lithography','magnet','mahogany','marble','metal','mosaic','mylar','oak','obsidian','oil paint','papyrus','paper','pastel','pastel pencils','pewter','plaster','plastics','plexiglass','polymer clay','porcelain','porphyry','resin','rubber','sand','silk','silver','silverpoint','slate','soapstone','sound','steel','stone','tempera paint','textiles','terracotta','utensils','vellum','velvet','venetian plaster','video','wax','wood') | foreach-object {'using ' + $_ + ' as artistic medium'} | sort-object -unique))
 
 # Create dropdown for Color
@@ -126,18 +117,15 @@ $colorLabel = New-Object System.Windows.Forms.Label
 $colorLabel.Text = 'Color'
 $colorLabel.AutoSize = $true
 $colorLabel.Location = New-Object System.Drawing.Point(5, 210)
-$colorCheckboxLabel = New-Object System.Windows.Forms.Label
-$colorCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$colorCheckboxLabel.AutoSize = $true
 $colorCheckbox = New-Object System.Windows.Forms.CheckBox
-$colorCheckbox.Location = New-Object System.Drawing.Point(160, 230)
-$colorCheckbox.Text = 'Freeze'
-$colorCheckbox.AutoSize = $true
+$colorCheckbox.Location = New-Object System.Drawing.Point(180, 230)
+$colorCheckbox.Text = 'Freeze',$colorLabel.Text
+$colorCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($colorCheckbox)
 $colorDropdown = New-Object System.Windows.Forms.ComboBox
 $colorDropdown.Location = New-Object System.Drawing.Point(5, 230)
 $colorDropdown.DropDownStyle = 'DropDown'
-$colorDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$colorDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $colordropdown.items.addrange((@('analogous','arctic','autumn','berry','black and white','blue','bright','candy','chocolate','citrus','coffee','complementary','cool','dark','desaturated','desert','dull','earth tones','fire','floral','forest','galactic','green','ice','jewel tones','light','metallic','midnight','monochrome','muted','nature','neon','neutral','oceanic','pastel','primary','psychedelic','rainbow','red','rose','rose gold','rustic','saturated','secondary','sepia','smoky','split-complementary','spring','stormy','summer','sunrise','sunset','tertiary','tetradic','triadic','tropical','twilight','urban','vibrant','warm','wine','winter','yellow') | foreach-object {$_ + ' color palette'} | sort-object -unique))
 
 # Create dropdown for Extra A
@@ -145,18 +133,15 @@ $extraALabel = New-Object System.Windows.Forms.Label
 $extraALabel.Text = 'ExtraA'
 $extraALabel.AutoSize = $true
 $extraALabel.Location = New-Object System.Drawing.Point(5, 260)
-$extraACheckboxLabel = New-Object System.Windows.Forms.Label
-$extraACheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$extraACheckboxLabel.AutoSize = $true
 $extraACheckbox = New-Object System.Windows.Forms.CheckBox
-$extraACheckbox.Location = New-Object System.Drawing.Point(160, 280)
-$extraACheckbox.Text = 'Freeze'
-$extraACheckbox.AutoSize = $true
+$extraACheckbox.Location = New-Object System.Drawing.Point(180, 280)
+$extraACheckbox.Text = 'Freeze',$extraALabel.Text
+$extraACheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($extraACheckbox)
 $extraADropdown = New-Object System.Windows.Forms.ComboBox
 $extraADropdown.Location = New-Object System.Drawing.Point(5, 280)
 $extraADropdown.DropDownStyle = 'DropDown'
-$extraADropdown.Size = New-Object System.Drawing.Size(150, 20)
+$extraADropdown.Size = New-Object System.Drawing.Size(165, 20)
 $extraAdropdown.items.addrange((@('8k','bokeh','crisp','double exposure','dramatic','dreamy','ethereal','extreme close-up','extremely detailed','glossy finish','golden hour','grainy','hazy','high contrast','high dynamic range','high key','infrared','kodachrome','landscape','leading lines','lens flare','long exposure','low key','macro','matte finish','minimalist','moody','motion blur','panoramic view','portrait','reflections','rule of thirds','shallow depth of field','silhouette','smoke filled','smooth','soft focus','star trails','studio lighting','symmetry','textured','tilt-shifted','time-lapse','upside down','vignette','vintage','whimsical') | sort-object -unique))
 
 # Create dropdown for Extra B
@@ -164,18 +149,15 @@ $extraBLabel = New-Object System.Windows.Forms.Label
 $extraBLabel.Text = 'ExtraB'
 $extraBLabel.AutoSize = $true
 $extraBLabel.Location = New-Object System.Drawing.Point(5, 310)
-$extraBCheckboxLabel = New-Object System.Windows.Forms.Label
-$extraBCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$extraBCheckboxLabel.AutoSize = $true
 $extraBCheckbox = New-Object System.Windows.Forms.CheckBox
-$extraBCheckbox.Location = New-Object System.Drawing.Point(160, 330)
-$extraBCheckbox.Text = 'Freeze'
-$extraBCheckbox.AutoSize = $true
+$extraBCheckbox.Location = New-Object System.Drawing.Point(180, 330)
+$extraBCheckbox.Text = 'Freeze',$extraBLabel.Text
+$extraBCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($extraBCheckbox)
 $extraBDropdown = New-Object System.Windows.Forms.ComboBox
 $extraBDropdown.Location = New-Object System.Drawing.Point(5, 330)
 $extraBDropdown.DropDownStyle = 'DropDown'
-$extraBDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$extraBDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $extraBDropdown.items.addrange((@('3d rendered','aerial view','ambient light','backlit','birds eye view','bokehlicious','chiaroscuro','cross processing','cyberpunk','deep depth of field','dystopian','fantasy','film grain','fish-eye lens','flat lay','hard shadows','isometric','lens flare','light painting','macro shot','magical realism','negative space','panoramic','perspective','post-apocalyptic','rim light','sci-fi','silhouette','soft shadows','split toning','steampunk','sunburst','telephoto','utopian','wide angle','worms eye view','zoomed in','abstract','allegorical','aperture','blue color temperature','blue hour','brightness','candlelight','conceptual','contrast','dawn','depressive tone','diurnal','dusk','figurative','futuristic','geometric','glow','golden hour','high aperture','high iso','high shutter speed','historical','illumination','long focal length','low exposure','luminance','medium saturation','medium white balance','moonlight','mythological','narrative','neon','nightfall','nocturnal','opposite hue','organic','out of focus','radiance','retro','seasonal','starlight','symbolic','timeless','twilight') | sort-object -unique))
 
 # Create dropdown for Extra C
@@ -183,18 +165,15 @@ $extraCLabel = New-Object System.Windows.Forms.Label
 $extraCLabel.Text = 'ExtraC'
 $extraCLabel.AutoSize = $true
 $extraCLabel.Location = New-Object System.Drawing.Point(5, 360)
-$extraCCheckboxLabel = New-Object System.Windows.Forms.Label
-$extraCCheckboxLabel.Location = New-Object System.Drawing.Point(130, 80)
-$extraCCheckboxLabel.AutoSize = $true
 $extraCCheckbox = New-Object System.Windows.Forms.CheckBox
-$extraCCheckbox.Location = New-Object System.Drawing.Point(160, 380)
-$extraCCheckbox.Text = 'Freeze'
-$extraCCheckbox.AutoSize = $true
+$extraCCheckbox.Location = New-Object System.Drawing.Point(180, 380)
+$extraCCheckbox.Text = 'Freeze',$extraCLabel.Text
+$extraCCheckbox.Size = New-Object System.Drawing.Size(65, 30)
 $form.Controls.Add($extraCCheckbox)
 $extraCDropdown = New-Object System.Windows.Forms.ComboBox
 $extraCDropdown.Location = New-Object System.Drawing.Point(5, 380)
 $extraCDropdown.DropDownStyle = 'DropDown'
-$extraCDropdown.Size = New-Object System.Drawing.Size(150, 20)
+$extraCDropdown.Size = New-Object System.Drawing.Size(165, 20)
 $extracdropdown.items.addrange((@('aperture', 'bokeh', 'bracketing', 'camera body', 'compact camera', 'depth of field', 'digital camera', 'dslr', 'exposure', 'exposure compensation', 'film camera', 'filter', 'fish-eye lens', 'flash', 'focal length', 'hdr', 'histogram', 'image stabilization', 'iso', 'jpeg format', 'lens mount', 'light meter', 'long exposure', 'macro lens', 'medium format camera', 'mirrorless camera', 'monopod', 'neutral density filter', 'panorama', 'pixel', 'point-and-shoot camera', 'polarizing filter', 'prime lens', 'raw format', 'reflector', 'resolution', 'sensor', 'shutter speed', 'softbox', 'speedlight', 'telephoto lens', 'time-lapse', 'tripod', 'white balance', 'wide-angle lens', 'zoom lens') | sort-object -unique))
 
 # Add event handlers to dropdowns
@@ -215,7 +194,7 @@ foreach ($dropdown in $dropdowns) {
         foreach ($dd in $dropdowns) {
             if ($dd.SelectedItem) { $selectedWords += $dd.SelectedItem }
         }
-        $clipboardText = [string]::Join(',', $selectedWords)
+        $clipboardText = [string]::Join(', ', $selectedWords)
         $copiedTextbox.Text = $clipboardText
 
         {if ($clipboardText -ne $null) {
@@ -232,14 +211,14 @@ $copiedLabel.Location = New-Object System.Drawing.Point(10, 410)
 $copiedTextbox = New-Object System.Windows.Forms.TextBox
 $copiedTextbox.Location = New-Object System.Drawing.Point(10, 430)
 $copiedTextbox.ReadOnly = $true
-$copiedTextbox.Size = New-Object System.Drawing.Size(530, 60)
+$copiedTextbox.Size = New-Object System.Drawing.Size(565, 60)
 $copiedTextbox.Multiline = $true
 $copiedTextbox.ScrollBars = 'Vertical'
 
 # Create a 'Random' button
 $randomButton = New-Object System.Windows.Forms.Button
 $randomButton.Text = 'Random Prompt Generator'
-$randomButton.Location = New-Object System.Drawing.Point(230, 30)
+$randomButton.Location = New-Object System.Drawing.Point(245, 30)
 $randomButton.Size = New-Object System.Drawing.Size(150, 180)
 
 $randomButton.Add_Click({
@@ -314,7 +293,7 @@ if ($null -ne $selectedWords) {
 # Add a button to open the website with the generated text
 $webMDButton = New-Object System.Windows.Forms.Button
 $webMDButton.Text = 'Open Prompt in Microsoft Designer'
-$webMDButton.Location = New-Object System.Drawing.Point(230, 215)
+$webMDButton.Location = New-Object System.Drawing.Point(245, 215)
 $webMDButton.Size = New-Object System.Drawing.Size(150, 90)
 
 $webMDButton.Add_Click({
@@ -350,7 +329,7 @@ $webMDButton.Add_Click({
 # Add a button to open the website with the generated text
 $webMCButton = New-Object System.Windows.Forms.Button
 $webMCButton.Text = 'Open Prompt in Microsoft Copilot'
-$webMCButton.Location = New-Object System.Drawing.Point(230, 310)
+$webMCButton.Location = New-Object System.Drawing.Point(245, 310)
 $webMCButton.Size = New-Object System.Drawing.Size(150, 90)
 
 $webMCButton.Add_Click({
